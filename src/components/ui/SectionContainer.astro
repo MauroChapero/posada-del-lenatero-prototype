@@ -1,0 +1,19 @@
+---
+interface Props {
+  id?: string;
+  className?: string; // Para añadir fondos de color o paddings específicos por fuera
+  containerClass?: string; // Para ajustes específicos al contenedor interno del 68%
+}
+
+const { 
+  id, 
+  className = "", 
+  containerClass = "" 
+} = Astro.props;
+---
+
+<section id={id} class:list={["w-full flex justify-center", className]}>
+  <div class:list={["w-[68%] max-w-350 px-4 md:px-0", containerClass]}>
+    <slot />
+  </div>
+</section>

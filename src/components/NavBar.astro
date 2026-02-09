@@ -1,0 +1,40 @@
+---
+import NavLink from "./ui/NavLink.astro";
+import WhatsAppButton from "./ui/WhatsAppButton.astro";
+import SectionContainer from "./ui/SectionContainer.astro";
+
+const navLinks = [
+	{ name: "Home", href: "#home" },
+	{ name: "Rates", href: "#rates" },
+	{ name: "Parking", href: "/" },
+	{ name: "Services & Photos", href: "/" },
+	{ name: "Testimonials", href: "/" },
+	{ name: "About Us", href: "/" },
+];
+---
+
+<header
+	class="fixed top-0 left-0 w-full z-1000 bg-white shadow-sm border-b border-gray-100"
+>
+	<SectionContainer>
+		<nav class="flex items-center justify-between py-4">
+			<a href="/" class="shrink-0">
+				<img
+					src="/icons/posadas-navbar-icon.webp"
+					alt="Logo"
+					class="h-12 w-auto"
+				/>
+			</a>
+
+			<ul class="hidden lg:flex items-center gap-8">
+				{
+					navLinks.map((link) => (
+						<NavLink href={link.href} name={link.name} />
+					))
+				}
+			</ul>
+
+			<WhatsAppButton text="Book Now!" />
+		</nav>
+	</SectionContainer>
+</header>
