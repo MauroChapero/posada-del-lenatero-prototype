@@ -1,0 +1,72 @@
+---
+import SectionContainer from "./ui/SectionContainer.astro";
+
+const ratings = [
+  { label: "Cleanliness", value: 100, note: "Excellent" },
+  { label: "Comfort", value: 98, note: "Unmatched" },
+  { label: "Location", value: 96, note: "Beautiful" },
+  { label: "Facilities", value: 100, note: "Highly Satisfied" },
+];
+---
+
+<SectionContainer id="about" className="bg-neutral-900 text-white py-16 md:py-24">
+    <div class="text-center mb-16 md:mb-20">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight uppercase mb-6 md:mb-8">
+        About <span class="text-[#25d366]">Us</span>
+      </h2>
+
+      <div class="max-w-3xl mx-auto text-neutral-400 text-base md:text-lg leading-relaxed flex flex-col gap-4 md:gap-6 px-4">
+        <p>
+          Located just <span class="text-white font-medium">8km from Ezeiza International Airport</span> in Ciudad Evita, Buenos Aires. We offer the highest quality service to ensure an unforgettable stay.
+        </p>
+        <p>
+          Rooms with AC, flat-screen TV, private bathroom, <span class="text-white font-medium">free WiFi</span>, breakfast, and parking. Plus 24-hour reception and recreational areas.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
+      
+      <div class="space-y-4 text-center lg:text-left">
+        <h3 class="text-4xl sm:text-5xl md:text-6xl font-black uppercase leading-[0.9] tracking-tighter">
+          We speak<br /><span class="text-[#25d366]">your language!</span>
+        </h3>
+        <p class="text-neutral-500 text-lg md:text-xl font-medium">Top-rated by international guests.</p>
+      </div>
+
+      <div class="bg-neutral-800/30 p-6 sm:p-8 md:p-10 rounded-3xl border border-neutral-800 mx-4 sm:mx-0">
+        <p class="uppercase text-[10px] sm:text-xs font-bold text-[#25d366] mb-8 md:mb-10 tracking-[0.2em] text-center sm:text-left">
+          Guest Ratings Summary
+        </p>
+
+        <ul class="grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-10">
+          {ratings.map(rating => (
+            <li class="flex flex-col items-center sm:items-start gap-3 md:gap-4">
+              <div
+                class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center text-sm sm:text-base font-black shadow-lg transition-transform hover:scale-110 duration-300"
+                role="progressbar"
+                aria-valuenow={rating.value}
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style={`background: conic-gradient(#25d366 ${rating.value * 3.6}deg, #262626 0deg);`}
+              >
+                <div class="w-[3.6rem] h-[3.6rem] sm:w-18 sm:h-18 bg-neutral-900 rounded-full flex items-center justify-center">
+                  {rating.value}%
+                </div>
+              </div>
+
+              <div class="text-center sm:text-left">
+                <p class="font-bold uppercase text-[10px] sm:text-sm tracking-wide text-white leading-tight">
+                  {rating.label}
+                </p>
+                <p class="text-[10px] sm:text-xs text-[#25d366] font-medium mt-1 uppercase tracking-tighter">
+                  {rating.note}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+</SectionContainer>
