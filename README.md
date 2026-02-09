@@ -1,46 +1,130 @@
-# Astro Starter Kit: Basics
+# Posada Leñatero – Astro + Tailwind Website
 
-```sh
-bun create astro@latest -- --template basics
-```
+Sitio web estático desarrollado con **Astro** y **Tailwind CSS**, orientado a:
+- performance
+- SEO
+- arquitectura por composición
+- mantenimiento simple y escalable
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+El proyecto evita JavaScript innecesario en runtime y prioriza HTML semántico.
 
-## 🚀 Project Structure
+---
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🚀 Stack tecnológico
+
+- **Astro**
+- **Tailwind CSS**
+- **Bun** (runtime + package manager)
+- **TypeScript** (configuración)
+- Assets optimizados (`.webp`, `.svg`)
+
+---
+
+## 📁 Estructura del proyecto
 
 ```text
 /
 ├── public/
+│   ├── icons/
+│   │   ├── posadas-navbar-icon.webp
+│   │   ├── whatsapp-icon.svg
+│   │   └── schedule.webp
+│   ├── images/
+│   │   ├── hero.webp
+│   │   └── rates-beds/
+│   │       ├── single-bed.webp
+│   │       ├── single-king-bed.webp
+│   │       ├── king-matrimonial-bed.webp
+│   │       └── ...
+│   ├── favicon.ico
 │   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+│
+├── src/
+│   ├── assets/
+│   │   ├── astro.svg
+│   │   └── background.svg
+│   │
+│   ├── components/
+│   │   ├── Hero.astro
+│   │   ├── Main.astro
+│   │   ├── NavBar.astro
+│   │   ├── Rates.astro
+│   │   └── ui/
+│   │       ├── NavLink.astro
+│   │       ├── SectionContainer.astro
+│   │       └── WhatsAppButton.astro
+│   │
+│   ├── layouts/
+│   │   └── Layout.astro
+│   │
+│   ├── pages/
+│   │   └── index.astro
+│   │
+│   └── styles/
+│       └── global.css
+│
+├── .gitignore
+├── .stylelintrc.json
+├── astro.config.mjs
+├── tailwind.config.mjs
+├── tsconfig.json
+├── bun.lock
+├── package.json
+└── README.md
+```
+---
+## 🧩 Arquitectura general
+
+**pages/:** orquestan layouts y secciones (sin lógica).
+
+**layouts/:** estructura base del documento HTML.
+
+**components/:** secciones del sitio.
+
+**components/ui/:** componentes reutilizables y atómicos.
+
+**public/:** assets estáticos accesibles directamente.
+
+**styles/:** estilos globales con Tailwind.
+
+Toda la UI se construye por composición de componentes Astro.
+---
+### 📐 Layout
+#### `Layout.astro`
+
+### Layout base del sitio:
+
+- Importa estilos globales
+- Define <head> (SEO + meta tags)
+- Habilita scroll-smooth
+- Compensa el header fijo (pt-20)
+
+### Uso:
+```
+<MainLayout title="Posada Leñatero | Home">
+  <NavBar />
+  <Main />
+</MainLayout>
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+### Props:
 
-## 🧞 Commands
+```
+title: string
+```
+---
+## 🧭 Navegación
+```
+NavBar.astro
+```
+#### Header fijo con:
 
-All commands are run from the root of the project, from a terminal:
+* Logo
+* Navegación principal
+* CTA a WhatsApp
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+#### Usa:
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- NavLink.astro
+- WhatsAppButton.astro
+- SectionContainer.astro
