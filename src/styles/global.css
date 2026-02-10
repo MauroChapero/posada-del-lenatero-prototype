@@ -6,21 +6,37 @@
   html {
     @apply text-[16px] overflow-x-hidden;
     -webkit-text-size-adjust: 100%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+
+  }
+
+  :global(body.overflow-hidden) {
+    overflow: hidden;
+    height: 100vh;
+    /* Ayuda a que ios respete el bloqueo */
   }
 
   body {
     @apply min-h-screen leading-normal pt-20;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Helvetica, Arial, sans-serif;
+      Roboto, Helvetica, Arial, sans-serif;
     text-rendering: optimizeLegibility;
   }
 
-  img, picture, svg {
-    @apply block max-w-full; /* Antes: max-width-full (Error) */
+  img,
+  picture,
+  svg {
+    @apply block max-w-full;
+    /* Antes: max-width-full (Error) */
   }
 
-  h1, h2, h3, h4 {
-    @apply wrap-break-word leading-[1.2]; /* Antes: overflow-wrap-break-word (Error) */
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply wrap-break-word leading-[1.2];
+    /* Antes: overflow-wrap-break-word (Error) */
   }
 }
 

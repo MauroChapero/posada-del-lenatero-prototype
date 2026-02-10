@@ -10,6 +10,7 @@ const navLinks = [
     { name: "Photos", href: "#photos" },
     { name: "About Us", href: "#about" },
 ];
+
 ---
 
 <header class="fixed top-0 left-0 w-full h-20 z-100 bg-white shadow-sm md:backdrop-blur-md pt-[env(safe-area-inset-top)]">
@@ -72,20 +73,45 @@ const navLinks = [
 <script>
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
-    const body = document.body;
-    const mobileLinks = document.querySelectorAll('.mobile-link');
+    const menuLinks = document.querySelectorAll('.mobile-link');
+
+    // Función para bloquear el scroll sin mover la página
+    function preventDefault(e) {
+        e.preventDefault();
+    }
 
     function toggleMenu() {
-        mobileMenu?.classList.toggle('translate-x-full');
-        body.classList.toggle('overflow-hidden'); // Evita scroll al estar abierto
-        menuToggle?.classList.toggle('active');
+        if (!mobileMenu || !menuToggle) return;
+
+        const isMenuOpen = !mobileMenu.classList.contains('translate-x-full');
+
+        if (isMenuOpen) {
+            // CERRAR
+            mobileMenu.classList.add('translate-x-full');
+            menuToggle.classList.remove('active');
+            // Habilitamos el scroll de nuevo
+            window.removeEventListener('wheel', preventDefault);
+            window.removeEventListener('touchmove', preventDefault);
+        } else {
+            // ABRIR
+            mobileMenu.classList.remove('translate-x-full');
+            menuToggle.classList.add('active');
+            // Bloqueamos el scroll del "fondo" pero permitimos el del menú
+            window.addEventListener('wheel', preventDefault, { passive: false });
+            window.addEventListener('touchmove', preventDefault, { passive: false });
+        }
     }
 
     menuToggle?.addEventListener('click', toggleMenu);
 
-    // Cerrar menú al hacer click en un enlace
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', toggleMenu);
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Importante: Liberar el scroll antes de navegar
+            window.removeEventListener('wheel', preventDefault);
+            window.removeEventListener('touchmove', preventDefault);
+            mobileMenu?.classList.add('translate-x-full');
+            menuToggle?.classList.remove('active');
+        });
     });
 </script>
 
