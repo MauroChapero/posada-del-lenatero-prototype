@@ -1,27 +1,74 @@
 ---
 import SectionContainer from "./ui/SectionContainer.astro";
 
-// Ejemplo de cómo estructurar la data
 const services = [
-  { name: "High-Speed WiFi", icon: "wifi", extra: false },
-  { name: "Breakfast Buffet", icon: "coffee", extra: true },
-  { name: "Bar Service", icon: "glass", extra: true },
-  { name: "TV & DVD", icon: "tv", extra: false },
+  {
+    name: "High-Speed WiFi",
+    icon: "wifi",
+    description:
+      "Enjoy seamless connectivity throughout the entire premises with our dedicated fiber optic network.",
+  },
+  {
+    name: "Continental Breakfast",
+    icon: "coffee",
+    description:
+      "Start your morning beautifully with our signature selection of fresh local products and premium coffee.",
+  },
+  {
+    name: "Refreshment Bar",
+    icon: "glass",
+    description:
+      "A curated selection of beverages including soft drinks, premium beers, and sparkling or still water.",
+  },
+  {
+    name: "Entertainment",
+    icon: "tv",
+    description:
+      "Relax with flat-screen cable TV and a dedicated DVD player for a complete cinematic experience.",
+  },
 ];
 ---
 
-<SectionContainer id="services">
-  <div class="text-center mb-10">
-    <h2 class="text-3xl font-bold uppercase tracking-wider">Services & Amenities</h2>
-    <p class="text-gray-600 mt-2">Personalize your stay with our optional services</p>
-  </div>
+<SectionContainer id="services" className="py-24 bg-[#fcfcfc]">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-20">
+      <h2 class="text-4xl md:text-5xl mb-[0.2rem] font-bold text-gray-900">
+        Amenities <span class="bg-clip-text text-gray-900">& Services</span>
+      </h2>
+      <p
+        class="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed font-light"
+      >
+        Every detail is thoughtfully curated to provide you with the ultimate
+        comfort and a truly memorable stay.
+      </p>
+    </div>
 
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-    {services.map(service => (
-      <div class="border p-6 rounded-xl flex flex-col items-center shadow-sm">
-        <h3 class="font-semibold">{service.name}</h3>
-        {service.extra && <span class="text-xs text-green-600 font-bold uppercase mt-2">Extra Cost</span>}
-      </div>
-    ))}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+      {
+        services.map((service) => (
+          <div class="group relative bg-white p-8 md:p-10 rounded-[2.5rem] border border-gray-100 transition-all duration-500 flex flex-col md:flex-row items-center md:items-start gap-8 hover:-translate-y-1">
+            <div class="relative shrink-0">
+              <div class="relative w-20 h-20 flex items-center justify-center rounded-2xl bg-gray-50 group-hover:bg-[#25d366] transition-all duration-500 group-hover:ring-1 group-hover:ring-gray-900">
+                <img
+                  src={`/icons/services/${service.icon}.webp`}
+                  alt={service.name}
+                  class="w-10 h-10 object-contain group-hover:brightness-0 group-hover:invert transition-all duration-500"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            <div class="text-center md:text-left">
+              <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#25d366] transition-colors duration-300">
+                {service.name}
+              </h3>
+              <p class="text-base text-[#555] leading-relaxed font-normal italic opacity-95">
+                {service.description}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
   </div>
-</section>
+</SectionContainer>
