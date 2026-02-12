@@ -12,7 +12,7 @@ const ratings = [
 <SectionContainer id="about" className="bg-neutral-900 text-white py-16 md:py-24">
     <div class="text-center mb-16 md:mb-20">
       <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight uppercase mb-6 md:mb-8">
-        About <span class="text-[#25d366]">Us</span>
+        About <span class="text-lime-600">Us</span>
       </h2>
 
       <div class="max-w-3xl mx-auto text-neutral-400 text-base md:text-lg leading-relaxed flex flex-col gap-4 md:gap-6 px-4">
@@ -29,13 +29,13 @@ const ratings = [
       
       <div class="space-y-4 text-center lg:text-left">
         <h3 class="text-4xl sm:text-5xl md:text-6xl font-black uppercase leading-[0.9] tracking-tighter">
-          We speak<br /><span class="text-[#25d366]">your language!</span>
+          We speak<br /><span class="text-lime-600">your language!</span>
         </h3>
         <p class="text-neutral-500 text-lg md:text-xl font-medium">Top-rated by international guests.</p>
       </div>
 
       <div class="bg-neutral-800/30 p-6 sm:p-8 md:p-10 rounded-3xl border border-neutral-800 mx-4 sm:mx-0">
-        <p class="uppercase text-[10px] sm:text-xs font-bold text-[#25d366] mb-8 md:mb-10 tracking-[0.2em] text-center sm:text-left">
+        <p class="uppercase text-[10px] sm:text-xs font-bold text-lime-600 mb-8 md:mb-10 tracking-[0.2em] text-center sm:text-left">
           Guest Ratings Summary
         </p>
 
@@ -48,7 +48,7 @@ const ratings = [
                 aria-valuenow={rating.value}
                 aria-valuemin="0"
                 aria-valuemax="100"
-                style={`background: conic-gradient(#25d366 ${rating.value * 3.6}deg, #262626 0deg);`}
+                style={`background: conic-gradient(oklch(64.8% 0.2 131.684) ${rating.value * 3.6}deg, oklch(64.8% 0.2 131.684) 0deg);`}
               >
                 <div class="w-[3.6rem] h-[3.6rem] sm:w-18 sm:h-18 bg-neutral-900 rounded-full flex items-center justify-center">
                   {rating.value}%
@@ -59,7 +59,7 @@ const ratings = [
                 <p class="font-bold uppercase text-[10px] sm:text-sm tracking-wide text-white leading-tight">
                   {rating.label}
                 </p>
-                <p class="text-[10px] sm:text-xs text-[#25d366] font-medium mt-1 uppercase tracking-tighter">
+                <p class="text-[10px] sm:text-xs text-lime-600 font-medium mt-1 uppercase tracking-tighter">
                   {rating.note}
                 </p>
               </div>

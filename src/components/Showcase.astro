@@ -1,1 +1,135 @@
-<h2 id="showcases" class="text-center text-3xl">Showcase</h2>
+---
+import SectionContainer from "./ui/SectionContainer.astro";
+
+// Todas las fotos (las que se ven y las que no)
+const allImages = [
+  { src: "/images/showcase/bedroom.webp", alt: "Luxurious Master Suite", class: "md:col-span-2 md:row-span-2 h-[400px] md:h-[600px]" },
+  { src: "/images/showcase/breakfast.webp", alt: "Gourmet Breakfast", class: "md:col-span-1 md:row-span-1 h-[200px] md:h-full" },
+  { src: "/images/showcase/bathroom.webp", alt: "Modern Private Bathroom", class: "md:col-span-1 md:row-span-1 h-[200px] md:h-full" },
+  { src: "/images/showcase/garden.webp", alt: "Outdoor Relax Area", class: "md:col-span-3 md:row-span-1 h-[250px] md:h-[400px]" },
+];
+
+const featuredImages = allImages.slice(0, 4);
+---
+
+<SectionContainer id="showcase" className="bg-neutral-900 text-white py-16 md:py-24">
+  <div class="text-center mb-12 md:mb-16">
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight uppercase mb-6">
+      Our <span class="text-lime-600">Showcase</span>
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+    {featuredImages.map((img, index) => (
+      <button 
+        class:list={["relative overflow-hidden rounded-[2.5rem] border border-neutral-800 bg-neutral-800/30 group cursor-zoom-in", img.class]}
+        data-gallery-item={index}
+      >
+        <div class="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent z-10 opacity-60 group-hover:opacity-90 transition-opacity"></div>
+        <img src={img.src} alt={img.alt} class="w-full h-full object-cover transition duration-700 group-hover:scale-105" />
+        <div class="absolute inset-0 z-20 flex flex-col justify-end p-8 text-left translate-y-2 group-hover:translate-y-0 transition-transform">
+          <p class="text-lime-600 text-[10px] font-bold uppercase tracking-[0.3em] mb-1">Explore</p>
+          <h3 class="text-white text-xl font-bold uppercase tracking-tighter">{img.alt}</h3>
+        </div>
+      </button>
+    ))}
+  </div>
+
+  <div class="mt-12 flex flex-col md:flex-row justify-between items-center gap-6 border-t border-neutral-800 pt-8">
+    <div class="flex items-center gap-4">
+       <p class="text-neutral-500 text-xs uppercase font-bold tracking-widest">
+        Showing {featuredImages.length} of {allImages.length} moments
+      </p>
+    </div>
+    
+    <button 
+      id="open-gallery"
+      class="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-white hover:text-lime-600 transition-colors"
+    >
+      View all photos 
+      <span class="flex items-center justify-center w-10 h-10 rounded-full border border-neutral-700 group-hover:border-lime-600 transition-all">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+        </svg>
+      </span>
+    </button>
+  </div>
+
+  <div id="gallery-modal" class="fixed inset-0 z-100 hidden bg-black/95 backdrop-blur-sm flex-col p-4 md:p-10">
+    <button id="close-gallery" class="absolute top-6 right-6 text-white hover:text-lime-600 z-110">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor font-bold">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <div class="h-full w-full flex items-center justify-center">
+        <img id="modal-img" src="" alt="" class="max-h-full max-w-full object-contain rounded-lg shadow-2xl transition-all duration-500" />
+        
+        <button id="prev-img" class="absolute left-4 md:left-10 p-4 text-white/50 hover:text-lime-600 transition-colors">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="next-img" class="absolute right-4 md:right-10 p-4 text-white/50 hover:text-lime-600 transition-colors">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+    </div>
+    
+    <div class="absolute bottom-10 left-0 right-0 text-center">
+        <p id="modal-caption" class="text-lime-600 font-bold uppercase tracking-widest text-sm"></p>
+    </div>
+  </div>
+</SectionContainer>
+
+<script define:vars={{ allImages }}>
+  const modal = document.getElementById('gallery-modal');
+  const modalImg = document.getElementById('modal-img');
+  const modalCaption = document.getElementById('modal-caption');
+  const closeBtn = document.getElementById('close-gallery');
+  const openBtn = document.getElementById('open-gallery');
+  const prevBtn = document.getElementById('prev-img');
+  const nextBtn = document.getElementById('next-img');
+  const galleryItems = document.querySelectorAll('[data-gallery-item]');
+
+  let currentIndex = 0;
+
+  function updateModal(index) {
+    currentIndex = index;
+    const img = allImages[currentIndex];
+    modalImg.style.opacity = '0';
+    setTimeout(() => {
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+        modalCaption.textContent = img.alt;
+        modalImg.style.opacity = '1';
+    }, 200);
+  }
+
+  function openModal(index) {
+    updateModal(index);
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden'; // Bloquea scroll
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = 'auto';
+  }
+
+  galleryItems.forEach((item, index) => {
+    item.addEventListener('click', () => openModal(index));
+  });
+
+  openBtn.addEventListener('click', () => openModal(0));
+  closeBtn.addEventListener('click', closeModal);
+  
+  nextBtn.addEventListener('click', () => updateModal((currentIndex + 1) % allImages.length));
+  prevBtn.addEventListener('click', () => updateModal((currentIndex - 1 + allImages.length) % allImages.length));
+
+  // Cerrar con Escape
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowRight' && !modal.classList.contains('hidden')) nextBtn.click();
+    if (e.key === 'ArrowLeft' && !modal.classList.contains('hidden')) prevBtn.click();
+  });
+</script>
