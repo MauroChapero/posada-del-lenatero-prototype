@@ -15,23 +15,28 @@ import { Icon } from "astro-icon/components";
             <Icon name="mdi:email-outline" class="w-6 h-6 text-lime-500" />
           </div>
           <div class="flex flex-col">
-            <span class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Email de contacto</span>
+            <span class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Contact Email</span>
             <span class="text-base md:text-lg font-semibold tracking-tight">chaperomauro1803@gmail.com</span>
           </div>
         </a>
 
-        <div class="flex items-center gap-4 text-white">
-          <div class="p-2.5 bg-white/5 rounded-xl">
+        <a 
+          href="https://maps.app.goo.gl/HbdhDvFHmuUseW6SA" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="flex items-center gap-4 text-white hover:text-lime-400 transition-all duration-300 group"
+        >
+          <div class="p-2.5 bg-white/5 rounded-xl group-hover:bg-lime-500/10 transition-colors">
             <Icon name="mdi:map-marker-outline" class="w-6 h-6 text-lime-500" />
           </div>
-          <div class="flex flex-col">
-            <span class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Ubicación</span>
-            <span class="text-sm md:text-base font-medium leading-tight text-gray-200">
+          <div class="flex flex-col text-left">
+            <span class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Find us</span>
+            <span class="text-sm md:text-base font-medium leading-tight text-gray-200 group-hover:text-white transition-colors">
               Circunscripción 1° Secc 1°, Mza 29, Casa 15<br class="hidden sm:block"/>
               Cdad. Evita, Buenos Aires
             </span>
           </div>
-        </div>
+        </a>
       </div>
 
       <div class="flex flex-col items-center lg:items-end gap-1 opacity-60 hover:opacity-100 transition-opacity">
@@ -39,7 +44,7 @@ import { Icon } from "astro-icon/components";
           Posada Del Leñatero 2016 © by <span class="text-white font-black">GonFe®</span>
         </p>
         <p class="text-[9px] text-gray-500 font-medium uppercase tracking-widest">
-          Diseño y Colaboración: 
+          Design & Collaboration: 
           <a 
             href="https://github.com/MauroChapero" 
             target="_blank" 
