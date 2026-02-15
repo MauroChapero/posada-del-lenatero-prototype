@@ -1,3 +1,55 @@
-<footer>
-    <h2 class="text-center text-3xl">Footer</h2>
+---
+import { Icon } from "astro-icon/components";
+---
+
+<footer class="bg-[#0f0f0f] py-8 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col lg:flex-row justify-between items-center gap-8">
+      
+      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+        <a 
+          href="mailto:chaperomauro1803@gmail.com" 
+          class="flex items-center gap-4 text-white hover:text-lime-400 transition-all duration-300 group"
+        >
+          <div class="p-2.5 bg-white/5 rounded-xl group-hover:bg-lime-500/10 transition-colors">
+            <Icon name="mdi:email-outline" class="w-6 h-6 text-lime-500" />
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Email de contacto</span>
+            <span class="text-base md:text-lg font-semibold tracking-tight">chaperomauro1803@gmail.com</span>
+          </div>
+        </a>
+
+        <div class="flex items-center gap-4 text-white">
+          <div class="p-2.5 bg-white/5 rounded-xl">
+            <Icon name="mdi:map-marker-outline" class="w-6 h-6 text-lime-500" />
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Ubicación</span>
+            <span class="text-sm md:text-base font-medium leading-tight text-gray-200">
+              Circunscripción 1° Secc 1°, Mza 29, Casa 15<br class="hidden sm:block"/>
+              Cdad. Evita, Buenos Aires
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col items-center lg:items-end gap-1 opacity-60 hover:opacity-100 transition-opacity">
+        <p class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.2em]">
+          Posada Del Leñatero 2016 © by <span class="text-white font-black">GonFe®</span>
+        </p>
+        <p class="text-[9px] text-gray-500 font-medium uppercase tracking-[0.1em]">
+          Diseño y Colaboración: 
+          <a 
+            href="https://github.com/MauroChapero" 
+            target="_blank" 
+            class="text-lime-500 hover:text-white transition-colors duration-300 font-bold"
+          >
+            Mauro Chapero
+          </a>
+        </p>
+      </div>
+
+    </div>
+  </div>
 </footer>
