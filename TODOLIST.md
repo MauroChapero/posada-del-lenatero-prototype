@@ -2,8 +2,9 @@
 
 ## General
 - [x] Change Hero Button with another phrase
-- [ ] Terminar la seccion Reviews
+- [x] Terminar la seccion Reviews
 - [ ] Terminar la seccion Footer
+- [ ] Reviews - Refactorizar y componetizar atomos
 
 ## Mobile
 - [x] Fix navbar bottom white line
