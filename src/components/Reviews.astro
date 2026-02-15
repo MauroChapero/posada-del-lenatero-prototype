@@ -1,1 +1,219 @@
-<h2 class="text-center text-3xl">Reviews</h2>
+---
+import SectionContainer from "./ui/SectionContainer.astro";
+import { Icon } from "astro-icon/components";
+
+const reviews = [
+    {
+        title: "Una estancia tranquila y agradable",
+        message:
+            "Se valora al máximo la atención de Kevin, su preocupación por el huésped para lograr que sea una agradable estadía. Se agradece, recomendado 100%.",
+        name: "Claudio",
+        location: "Chile",
+        date: "December, 2017",
+        countryCode: "cl",
+    },
+    {
+        title: "Wonderful Experience",
+        message:
+            "Kevin is a wonderful person. As promised he picked us up at the airport even though we had been delayed 2 hours. He then recommended a local restaurant which was one of the best meals we had in our entire 2 weeks vacation and even took us there and picked us up. We were getting an early morning flight and he got up at 3.30am to make our breakfast, he then took us to the airport. Kevins father was English so there were no communication problems at all. If you have a short layover at EZE airport Kevin is an absolute treasure. The host with the most.",
+        name: "Suzanne",
+        location: "United States",
+        date: "December, 2017",
+        countryCode: "us",
+    },
+    {
+        title: "Perfect place and host",
+        message:
+            "Super clean room, proximity to the EZE airport and the host Kevin is so polite and helpful. I felt really comfortable. Thank you very much for everything.",
+        name: "Christos",
+        location: "Germany",
+        date: "December, 2017",
+        countryCode: "de",
+    },
+    {
+        title: "Great service",
+        message:
+            "Kevin the host went out of his way to ensure we had a good stay and kindly picked us up and dropped us off at the airport and gave us recommendations for dinner. We couldn’t fault anything with out stay. Room was really nice and bed was very comfortable.",
+        name: "Stephanie",
+        location: "New Zealand",
+        date: "December, 2017",
+        countryCode: "nz",
+    },
+    {
+        title: "Great stay at Ezezia B&B",
+        message:
+            "Amazing hospitality, great communication, terrific breakfast, and all in a beautiful house. True b&b experience. Includes rides to EZE airport. And the WiFi is great as well. Thanks Kevin!",
+        name: "Tobiah",
+        location: "United States",
+        date: "December, 2017",
+        countryCode: "us",
+    },
+    {
+        title: "Best customer service you will ever get",
+        message:
+            "Excellent location for EZE early morning departures and late night arrivals. Kevin speaks perfect English which is rare in South America and is 100% committed to customer satisfaction. Great wifi connection and pleasant suburb community with local restaurants and a large mall with a great food court within a 15 minute drive. I enjoyed breakfast and appreciated that Kevin picked me up at 0130 am because of a flight delay and dropped me back to the airport 26.5 hrs later at 0400 am. He even got up at 0330 hours to make breakfast!! Highly recommended as a superb airport area B&B.",
+        name: "Ron",
+        location: "Canada",
+        date: "December, 2017",
+        countryCode: "ca",
+    },
+    {
+        title: "Excepcional",
+        message: "The host was super friendly and spoke very good english.",
+        name: "Robin",
+        location: "Netherlands",
+        date: "December, 2017",
+        countryCode: "nl",
+    },
+    {
+        title: "Excepcional",
+        message:
+            "Excelente atención, nos estaban esperando como en casa. Al momento del check in 17:00 hs aprox nos recibió con una rica merienda y la cordial atención. Hab cómodas, cama excelente, ideal para descansar. Kevin y su señora muy amenos y agradables. Muchas gracias.",
+        name: "Jose",
+        location: "Argentina",
+        date: "December, 2017",
+        countryCode: "ar",
+    },
+];
+---
+
+<SectionContainer id="reviews" className="py-24 bg-[#fcfcfc]">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-20">
+            <h2
+                class="text-4xl md:text-5xl mb-[0.2rem] font-bold text-gray-900"
+            >
+                Guest <span class="text-lime-600">Reviews</span>
+            </h2>
+            <p
+                class="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed font-light"
+            >
+                Verified experiences from travelers who have made our house
+                their home near EZE Airport.
+            </p>
+        </div>
+
+        <div class="relative mt-5">
+            <div
+                id="reviews-wrapper"
+                class="grid p-2 grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 overflow-hidden max-h-212.5 transition-[max-height] duration-1000 ease-in-out"
+            >
+                {
+                    reviews.map((review) => (
+                        <div
+                            class="group flex flex-col bg-white p-8 md:p-10 rounded-[2.5rem] 
+            border-2 border-gray-100 
+            transition-all duration-500 
+            hover:border-lime-600 hover:-translate-y-2 hover:shadow-2xl hover:shadow-lime-600/10 
+            min-h-80 relative overflow-hidden"
+                        >
+                            <div class="absolute top-0 left-0 w-full h-1 bg-lime-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="flex gap-1 text-lime-600">
+                                    {[...Array(5)].map(() => (
+                                        <Icon name="mdi:star" class="w-4 h-4" />
+                                    ))}
+                                </div>
+                                <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest italic">
+                                    {review.date}
+                                </span>
+                            </div>
+
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-lime-600 transition-colors duration-300">
+                                "{review.title}"
+                            </h3>
+
+                            <div class="grow">
+                                <p class="text-base text-[#555] leading-relaxed font-normal opacity-95 line-clamp-4 transition-all duration-700">
+                                    {review.message}
+                                </p>
+                            </div>
+
+                            <div class="flex items-center gap-4 pt-6 border-t border-gray-100 mt-6">
+                                <div class="relative shrink-0">
+                                    <div class="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center text-gray-900 font-bold text-lg border-2 border-transparent group-hover:border-lime-600 group-hover:bg-white transition-all duration-500 shadow-sm">
+                                        {review.name.charAt(0)}
+                                    </div>
+
+                                    {/* INSERCIÓN DE LA BANDERA */}
+                                    <div class="absolute -bottom-2 -right-2 drop-shadow-md">
+                                        <Icon
+                                            name={`circle-flags:${review.countryCode}`}
+                                            class="w-6 h-6"
+                                        />
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm uppercase tracking-wider leading-none mb-1">
+                                        {review.name}
+                                    </p>
+                                    <p class="text-[11px] text-gray-500 font-medium italic">
+                                        Guest from {review.location}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <div
+                id="reviews-overlay"
+                class="absolute bottom-0 left-0 right-0 h-64 bg-linear-to-t from-[#fcfcfc] via-[#fcfcfc]/90 to-transparent flex items-end justify-center pb-8 transition-all duration-500"
+            >
+                <button
+                    id="show-more-reviews"
+                    class="group flex items-center gap-3 bg-gray-900 text-white px-10 py-4 rounded-full font-bold uppercase text-[11px] tracking-[0.2em] hover:bg-lime-600 transition-all duration-300 active:scale-95 shadow-xl shadow-gray-200"
+                >
+                    Read All {reviews.length} Reviews
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4 text-lime-400 group-hover:translate-y-1 transition-transform"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="3"
+                            d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</SectionContainer>
+
+<script>
+    function setupReviews() {
+        const button = document.getElementById("show-more-reviews");
+        const wrapper = document.getElementById("reviews-wrapper");
+        const overlay = document.getElementById("reviews-overlay");
+
+        if (button && wrapper && overlay) {
+            button.addEventListener("click", () => {
+                // Expandimos el contenedor (un valor alto para que funcione la transición)
+                wrapper.style.maxHeight = "5000px";
+
+                // Quitamos el line-clamp de los párrafos para mostrar el texto completo
+                const messages = wrapper.querySelectorAll("p.line-clamp-4");
+                messages.forEach((msg) => {
+                    msg.classList.remove("line-clamp-4");
+                });
+
+                // Desvanecemos y eliminamos el botón
+                overlay.classList.add("opacity-0", "pointer-events-none");
+
+                setTimeout(() => {
+                    overlay.remove();
+                }, 500);
+            });
+        }
+    }
+
+    // Ejecutar en carga inicial y cuando Astro cambie de página (si usas View Transitions)
+    setupReviews();
+    document.addEventListener("astro:after-swap", setupReviews);
+</script>
