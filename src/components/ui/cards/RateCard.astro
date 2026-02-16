@@ -1,0 +1,26 @@
+---
+import PriceBadge from "./PriceBadge.astro";
+
+interface Props {
+    title: string;
+    price: string;
+}
+
+const { title, price } = Astro.props;
+---
+
+<article
+    class="bg-white rounded-[15px] p-[1.2rem] flex flex-col items-center shadow-sm"
+>
+    <div class="h-22.5 flex items-center justify-center mb-4 gap-1">
+        <slot name="icons" />
+    </div>
+
+    <h3 class="text-[1.1rem] font-semibold text-center">
+        {title}
+    </h3>
+
+    <hr class="w-7.5 my-2.5 border-t border-[#ddd]" />
+
+    <PriceBadge price={price} />
+</article>

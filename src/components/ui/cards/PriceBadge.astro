@@ -1,0 +1,19 @@
+---
+interface Props {
+    price: string;
+    isFeatured?: boolean;
+}
+
+const { price, isFeatured = false } = Astro.props;
+---
+
+<div
+    class:list={[
+        "mt-auto font-mono text-[1.3rem] font-extrabold px-5 py-2 rounded-full border-2 shadow-sm",
+        isFeatured
+            ? "bg-lime-600 text-black border-[#1a1a1a] text-[1.4rem] font-black"
+            : "bg-[#1a1a1a] text-white border-lime-600",
+    ]}
+>
+    {price}
+</div>

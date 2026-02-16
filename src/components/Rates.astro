@@ -1,99 +1,137 @@
 ---
-import SectionContainer from "./ui/SectionContainer.astro";
+import PriceBadge from "@ui/cards/PriceBadge.astro";
+import RateCard from "@ui/cards/RateCard.astro";
+import SectionContainer from "@ui/layout/SectionContainer.astro";
 ---
 
 <SectionContainer id="rates" className="bg-[#f4f4f4] py-16">
     <div class="text-center mb-8">
-        <h2 class="text-4xl md:text-5xl mb-[0.2rem] font-bold text-gray-900">Available Rates</h2>
+        <h2 class="text-4xl md:text-5xl mb-[0.2rem] font-bold text-gray-900">
+            Available Rates
+        </h2>
         <p class="text-[0.9rem] text-[#555]">Final prices per night</p>
     </div>
-
     <div class="flex flex-col gap-4">
-        
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 order-2 md:order-1">
-            <article class="bg-white rounded-[15px] p-[1.2rem] flex flex-col items-center shadow-sm">
-                <div class="h-22.5 flex items-center justify-center mb-4">
-                    <img src="icons/rates/single-bed.webp" alt="Single bed" width="86" />
-                </div>
-                <h3 class="text-[1.1rem] font-semibold">Standard Single Room</h3>
-                <hr class="w-7.5 my-2.5 border-t border-[#ddd]" />
-                <div class="mt-auto font-mono bg-[#1a1a1a] text-white text-[1.3rem] font-extrabold px-5 py-2 rounded-full border-2 border-lime-600">$95 USD</div>
-            </article>
+            <RateCard title="Standard Single Room" price="$95 USD">
+                <img
+                    slot="icons"
+                    src="icons/rates/single-bed.webp"
+                    alt="Single bed"
+                    width="86"
+                />
+            </RateCard>
 
-            <article class="bg-white rounded-[15px] p-[1.2rem] flex flex-col items-center shadow-sm">
-                <div class="h-22.5 flex items-center justify-center gap-2 mb-4">
-                    <img src="icons/rates/single-bed.webp" class="w-11.25 h-auto" alt="Twin 1" />
-                    <img src="icons/rates/single-bed.webp" class="w-11.25 h-auto" alt="Twin 2" />
-                </div>
-                <h3 class="text-[1.1rem] font-semibold">Twin Comfort Room</h3>
-                <hr class="w-7.5 my-2.5 border-t border-[#ddd]" />
-                <div class="mt-auto font-mono bg-[#1a1a1a] text-white text-[1.3rem] font-extrabold px-5 py-2 rounded-full border-2 border-lime-600">$110 USD</div>
-            </article>
+            <RateCard title="Twin Comfort Room" price="$110 USD">
+                <Fragment slot="icons">
+                    <img
+                        src="icons/rates/single-bed.webp"
+                        class="w-11.25 h-auto"
+                        alt="Twin 1"
+                    />
+                    <img
+                        src="icons/rates/single-bed.webp"
+                        class="w-11.25 h-auto"
+                        alt="Twin 2"
+                    />
+                </Fragment>
+            </RateCard>
 
-            <article class="bg-white rounded-[15px] p-[1.2rem] flex flex-col items-center shadow-sm">
-                <div class="h-22.5 flex items-center justify-center mb-4">
-                    <img src="icons/rates/single-king-bed.webp" alt="King Single" width="86" />
-                </div>
-                <h3 class="text-[1.1rem] font-semibold">King Single Room</h3>
-                <hr class="w-7.5 my-2.5 border-t border-[#ddd]" />
-                <div class="mt-auto font-mono bg-[#1a1a1a] text-white text-[1.3rem] font-extrabold px-5 py-2 rounded-full border-2 border-lime-600">$105 USD</div>
-            </article>
+            <RateCard title="King Single Room" price="$105 USD">
+                <img
+                    slot="icons"
+                    src="icons/rates/single-king-bed.webp"
+                    alt="King Single Bed"
+                    width="86"
+                />
+            </RateCard>
         </div>
 
         <div class="w-full order-1 md:order-2 my-2 md:my-0">
-            <article class="relative bg-white rounded-[15px] p-6 md:px-10 flex flex-col md:flex-row items-center justify-between shadow-md border-2 border-lime-600">
-                <span class="absolute -top-3 left-5 bg-lime-600 text-white px-3 py-1 text-[0.7rem] font-black rounded-full shadow-sm">
+            <article
+                class="relative bg-white rounded-[15px] p-6 md:px-10 flex flex-col md:flex-row items-center justify-between shadow-md border-2 border-lime-600"
+            >
+                <span
+                    class="absolute -top-3 left-5 bg-lime-600 text-white px-3 py-1 text-[0.7rem] font-black rounded-full shadow-sm"
+                >
                     ★ MOST POPULAR
                 </span>
-                <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-center md:text-left">
+                <div
+                    class="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-center md:text-left"
+                >
                     <div class="h-20 flex items-center">
-                        <img src="icons/rates/king-matrimonial-bed.webp" alt="King Matrimonial" width="86" />
+                        <img
+                            src="icons/rates/king-matrimonial-bed.webp"
+                            alt="King Matrimonial"
+                            width="86"
+                        />
                     </div>
                     <div>
-                        <h3 class="text-[1.2rem] font-bold">King Matrimonial Suite</h3>
-                        <p class="text-[0.85rem] text-[#666]">Perfect for couples.</p>
+                        <h3 class="text-[1.2rem] font-bold">
+                            King Matrimonial Suite
+                        </h3>
+                        <p class="text-[0.85rem] text-[#666]">
+                            Perfect for couples.
+                        </p>
                     </div>
                 </div>
-                <div class="mt-4 md:mt-0 font-mono bg-lime-600 text-black text-[1.4rem] font-black px-6 py-2 rounded-full border-2 border-[#1a1a1a] shadow-sm">
-                    $125 USD
-                </div>
+                <PriceBadge price="$125 USD" isFeatured />
             </article>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 order-3">
-            <article class="bg-white rounded-[15px] p-[1.2rem] flex flex-col items-center shadow-sm">
-                <div class="h-22.5 flex items-center justify-center gap-1 mb-4">
+            <RateCard title="Triple Standard Room" price="$140 USD">
+                <div
+                    slot="icons"
+                    class="grid grid-cols-2 gap-1 justify-items-center"
+                >
                     <img src="icons/rates/single-bed.webp" class="w-7 h-auto" />
                     <img src="icons/rates/single-bed.webp" class="w-7 h-auto" />
-                    <img src="icons/rates/single-bed.webp" class="w-7 h-auto" />
-                </div>
-                <h3 class="text-[1.1rem] font-semibold text-center">Triple Standard Room</h3>
-                <hr class="w-7.5 my-2.5 border-t border-[#ddd]" />
-                <div class="mt-auto font-mono bg-[#1a1a1a] text-white text-[1.3rem] font-extrabold px-5 py-2 rounded-full border-2 border-lime-600">$140 USD</div>
-            </article>
 
-            <article class="bg-white rounded-[15px] p-[1.2rem] flex flex-col items-center shadow-sm">
-                <div class="h-22.5 flex items-center justify-center gap-2 mb-4">
-                    <img src="icons/rates/king-matrimonial-bed.webp" class="w-14 h-auto" />
-                    <img src="icons/rates/single-bed.webp" class="w-9 h-auto mt-2" />
+                    <img
+                        src="icons/rates/single-bed.webp"
+                        class="w-7 h-auto col-span-2"
+                    />
                 </div>
-                <h3 class="text-[1.1rem] font-semibold">Triple Deluxe Room</h3>
-                <hr class="w-7.5 my-2.5 border-t border-[#ddd]" />
-                <div class="mt-auto font-mono bg-[#1a1a1a] text-white text-[1.3rem] font-extrabold px-5 py-2 rounded-full border-2 border-lime-600">$140 USD</div>
-            </article>
+            </RateCard>
 
-            <article class="bg-white rounded-[15px] p-[1.2rem] flex flex-col items-center shadow-sm">
-                <div class="h-22.5 flex flex-col items-center justify-center mb-4">
-                    <img src="icons/rates/king-matrimonial-bed.webp" class="w-14 h-auto" />
-                    <div class="flex gap-1">
-                        <img src="icons/rates/single-bed.webp" class="w-7 h-auto" />
-                        <img src="icons/rates/single-bed.webp" class="w-7 h-auto" />
+            <RateCard title="Triple Deluxe Room" price="$140 USD">
+                <Fragment slot="icons">
+                    <img
+                        src="icons/rates/king-matrimonial-bed.webp"
+                        class="w-11.25 h-auto"
+                        alt="King Matrimonial Bed"
+                    />
+                    <img
+                        src="icons/rates/single-bed.webp"
+                        class="w-11.25 h-auto"
+                        alt="Twin 2"
+                    />
+                </Fragment>
+            </RateCard>
+
+            <RateCard title="Family Suite (4 guests)" price="$150 USD">
+                <div slot="icons" class="flex flex-col items-center gap-2">
+                    <img
+                        src="icons/rates/king-matrimonial-bed.webp"
+                        class="w-14 h-auto"
+                        alt="King Matrimonial Bed"
+                    />
+
+                    <div class="flex gap-2">
+                        <img
+                            src="icons/rates/single-bed.webp"
+                            class="w-9 h-auto"
+                            alt="Twin 1"
+                        />
+                        <img
+                            src="icons/rates/single-bed.webp"
+                            class="w-9 h-auto"
+                            alt="Twin 2"
+                        />
                     </div>
                 </div>
-                <h3 class="text-[1.1rem] font-semibold">Family Suite (4 guests)</h3>
-                <hr class="w-7.5 my-2.5 border-t border-[#ddd]" />
-                <div class="mt-auto font-mono bg-[#1a1a1a] text-white text-[1.3rem] font-extrabold px-5 py-2 rounded-full border-2 border-lime-600">US$ 150</div>
-            </article>
+            </RateCard>
         </div>
     </div>
 </SectionContainer>

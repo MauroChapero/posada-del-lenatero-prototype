@@ -1,5 +1,7 @@
 ---
-interface Props {
+import type { NavLink } from "@types";
+
+interface Props extends NavLink {
   href: string;
   name: string;
 }
@@ -13,6 +15,8 @@ const { href, name } = Astro.props;
     class="text-[15px] font-medium text-gray-600 hover:text-lime-600 transition-colors duration-300 ease-in-out relative group"
   >
     {name}
-    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-lime-600 transition-all duration-300 group-hover:w-full"></span>
+    <span
+      class="absolute -bottom-1 left-0 w-0 h-0.5 bg-lime-600 transition-all duration-300 group-hover:w-full"
+    ></span>
   </a>
 </li>

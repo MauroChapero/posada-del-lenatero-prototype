@@ -1,0 +1,18 @@
+---
+import type { NavLink } from "@types";
+
+interface Props extends NavLink {
+    href: string;
+    name: string;
+}
+const { href, name } = Astro.props;
+---
+
+<li>
+    <a
+        href={href}
+        class="mobile-link text-gray-800 hover:text-green-600 transition-colors"
+    >
+        {name}
+    </a>
+</li>

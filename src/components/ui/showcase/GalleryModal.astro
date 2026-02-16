@@ -1,0 +1,135 @@
+---
+// src/components/ui/showcase/GalleryModal.astro
+import { showcaseImages } from "@constants/showcase";
+---
+
+<div
+    id="gallery-modal"
+    class="fixed inset-0 z-100 hidden bg-black/95 backdrop-blur-sm flex-col p-4 md:p-10"
+    role="dialog"
+    aria-modal="true"
+>
+    <button
+        id="close-gallery"
+        class="absolute top-6 right-6 text-white hover:text-lime-600 z-110"
+    >
+        <svg
+            class="w-10 h-10"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </button>
+
+    <div class="h-full w-full flex items-center justify-center relative">
+        <img
+            id="modal-img"
+            src=""
+            alt=""
+            class="max-h-full max-w-full object-contain rounded-lg shadow-2xl transition-opacity duration-300"
+        />
+
+        <button
+            id="prev-img"
+            class="absolute left-4 md:left-10 p-4 text-white/50 hover:text-lime-600 transition-colors"
+        >
+            <svg
+                class="w-12 h-12"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"></path></svg
+            >
+        </button>
+
+        <button
+            id="next-img"
+            class="absolute right-4 md:right-10 p-4 text-white/50 hover:text-lime-600 transition-colors"
+        >
+            <svg
+                class="w-12 h-12"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"></path></svg
+            >
+        </button>
+    </div>
+
+    <div class="absolute bottom-10 left-0 right-0 text-center">
+        <p
+            id="modal-caption"
+            class="text-lime-600 font-bold uppercase tracking-widest text-sm"
+        >
+        </p>
+    </div>
+</div>
+
+<script define:vars={{ showcaseImages }}>
+    // Aquí pegas la lógica de JavaScript que ya tenías,
+    // asegurándote de usar 'showcaseImages' en lugar de 'allImages'
+    const modal = document.getElementById("gallery-modal");
+    const modalImg = document.getElementById("modal-img");
+    const modalCaption = document.getElementById("modal-caption");
+    const closeBtn = document.getElementById("close-gallery");
+    const prevBtn = document.getElementById("prev-img");
+    const nextBtn = document.getElementById("next-img");
+    const galleryItems = document.querySelectorAll("[data-gallery-item]");
+    const openBtn = document.getElementById("open-gallery");
+
+    let currentIndex = 0;
+
+    function updateModal(index) {
+        currentIndex = (index + showcaseImages.length) % showcaseImages.length;
+        const img = showcaseImages[currentIndex];
+        modalImg.style.opacity = "0";
+        setTimeout(() => {
+            modalImg.src = img.src;
+            modalImg.alt = img.alt;
+            modalCaption.textContent = img.alt;
+            modalImg.style.opacity = "1";
+        }, 200);
+    }
+
+    const openModal = (index) => {
+        updateModal(index);
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+    };
+
+    const closeModal = () => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.style.overflow = "auto";
+    };
+
+    galleryItems.forEach((item, index) =>
+        item.addEventListener("click", () => openModal(index)),
+    );
+    openBtn?.addEventListener("click", () => openModal(0));
+    closeBtn?.addEventListener("click", closeModal);
+    nextBtn?.addEventListener("click", () => updateModal(currentIndex + 1));
+    prevBtn?.addEventListener("click", () => updateModal(currentIndex - 1));
+
+    window.addEventListener("keydown", (e) => {
+        if (modal.classList.contains("hidden")) return;
+        if (e.key === "Escape") closeModal();
+        if (e.key === "ArrowRight") nextBtn.click();
+        if (e.key === "ArrowLeft") prevBtn.click();
+    });
+</script>
