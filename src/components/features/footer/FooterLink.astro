@@ -1,0 +1,36 @@
+---
+import { Icon } from "astro-icon/components";
+import type { ContactInfo } from "@types";
+
+interface Props {
+    info: ContactInfo;
+}
+
+const { info } = Astro.props;
+---
+
+<a
+    href={info.href}
+    target={info.isExternal ? "_blank" : undefined}
+    rel={info.isExternal ? "noopener noreferrer" : undefined}
+    class="flex items-start gap-4 text-white hover:text-lime-400 transition-all duration-300 group w-full md:w-auto"
+>
+    <div
+        class="flex-none p-2.5 bg-white/5 rounded-xl group-hover:bg-lime-500/10 transition-colors shrink-0"
+    >
+        <Icon name={info.icon} class="w-6 h-6 text-lime-500" />
+    </div>
+
+    <div class="flex flex-col text-left min-w-0">
+        <span
+            class="text-xs uppercase tracking-widest text-gray-500 font-bold mb-1"
+        >
+            {info.label}
+        </span>
+        <span
+            class="text-sm md:text-base font-medium leading-tight text-gray-200 group-hover:text-white transition-colors wrap-break-word lg:max-w-xs"
+        >
+            {info.value}
+        </span>
+    </div>
+</a>

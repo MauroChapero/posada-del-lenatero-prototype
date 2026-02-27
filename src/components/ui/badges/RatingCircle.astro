@@ -2,9 +2,10 @@
 // src/components/ui/RatingCircle.astro
 interface Props {
     value: number;
+    label: string;
 }
 
-const { value } = Astro.props;
+const { value, label } = Astro.props;
 const degrees = value * 3.6;
 ---
 
@@ -14,6 +15,7 @@ const degrees = value * 3.6;
     aria-valuenow={value}
     aria-valuemin="0"
     aria-valuemax="100"
+    aria-label={label}
     style={`background: conic-gradient(oklch(64.8% 0.2 131.684) ${degrees}deg, #262626 0deg);`}
 >
     <div

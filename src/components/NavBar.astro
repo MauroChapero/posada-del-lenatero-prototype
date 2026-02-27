@@ -1,10 +1,10 @@
 ---
-import NavLink from "@ui/navigation/NavLink.astro";
+import NavLink from "@features/navigation/NavLink.astro";
 import WhatsAppButton from "@ui/buttons/WhatsAppButton.astro";
 import SectionContainer from "@ui/layout/SectionContainer.astro";
-import HamburgerButton from "@ui/navigation/HamburgerButton.astro";
-import Logo from "@ui/layout/Logo.astro";
-import MobileNavLink from "@ui/navigation/MobileNavLink.astro";
+import HamburgerButton from "@ui/buttons/HamburgerButton.astro";
+import Logo from "@ui/brand/Logo.astro";
+import MobileNavLink from "@features/navigation/MobileNavLink.astro";
 
 import { navLinks } from "@constants/navLinks";
 import type { NavLink as NavLinkType } from "@types";
@@ -24,7 +24,7 @@ import type { NavLink as NavLinkType } from "@types";
                 }
             </ul>
 
-            <div class="flex items-center gap-4 z-110">
+            <div class="flex items-center gap-4 z-1001">
                 <div class="hidden sm:block">
                     <WhatsAppButton text="Book Now!" />
                 </div>

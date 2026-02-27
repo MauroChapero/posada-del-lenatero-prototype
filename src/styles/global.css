@@ -11,10 +11,10 @@
 
   }
 
-  :global(body.overflow-hidden) {
+  :global(body.menu-open) {
     overflow: hidden;
     height: 100vh;
-    /* Ayuda a que ios respete el bloqueo */
+    /* Fija la altura para que no salte */
   }
 
   body {

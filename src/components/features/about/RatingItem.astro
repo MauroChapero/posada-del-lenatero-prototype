@@ -1,21 +1,21 @@
 ---
 // src/components/ui/RatingItem.astro
 import type { Rating } from "@types";
-import RatingCircle from "./RatingCircle.astro";
+import RatingCircle from "@ui/badges/RatingCircle.astro";
 
 interface Props extends Rating {}
 
-const { label, value, note } = Astro.props;
+const { title, label, value, note } = Astro.props;
 ---
 
 <li class="flex flex-col items-center sm:items-start gap-3 md:gap-4">
-    <RatingCircle value={value} />
+    <RatingCircle value={value} label={label} />
 
     <div class="text-center sm:text-left">
         <p
             class="font-bold uppercase text-[10px] sm:text-sm tracking-wide text-white leading-tight"
         >
-            {label}
+            {title}
         </p>
         <p
             class="text-[10px] sm:text-xs text-lime-600 font-medium mt-1 uppercase tracking-tighter"

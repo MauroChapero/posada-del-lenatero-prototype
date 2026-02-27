@@ -3,17 +3,33 @@ interface Props {
   id?: string;
   className?: string; // Para añadir fondos de color o paddings específicos por fuera
   containerClass?: string; // Para ajustes específicos al contenedor interno del 68%
+  //Activa un margen superior de 6rem (96px) para compensar el header fixed al usar anclajes ID
+  hasScrollMargin?: boolean;
 }
 
-const { 
-  id, 
-  className = "", 
-  containerClass = "" 
+const {
+  id,
+  className = "",
+  containerClass = "",
+  hasScrollMargin = false,
 } = Astro.props;
 ---
 
-<section id={id} class:list={["w-full flex justify-center", className]}>
-  <div class:list={["w-[68%] max-w-350 px-4 md:px-0", containerClass]}>
+<section
+  id={id}
+  class:list={[
+    "w-full flex justify-center",
+    { "scroll-mt-24": hasScrollMargin },
+    className,
+  ]}
+>
+  <div
+    class:list={[
+      "w-full px-4 md:px-6 lg:px-8",
+      "max-w-7xl mx-auto",
+      containerClass,
+    ]}
+  >
     <slot />
   </div>
 </section>

@@ -1,35 +1,11 @@
 ---
 import SectionContainer from "@ui/layout/SectionContainer.astro";
+import ServiceCard from "@features/services/ServiceCard.astro";
 
-const services = [
-  {
-    name: "High-Speed WiFi",
-    icon: "wifi",
-    description:
-      "Enjoy seamless connectivity throughout the entire premises with our dedicated fiber optic network.",
-  },
-  {
-    name: "Continental Breakfast",
-    icon: "coffee",
-    description:
-      "Start your morning beautifully with our signature selection of fresh local products and premium coffee.",
-  },
-  {
-    name: "Refreshment Bar",
-    icon: "glass",
-    description:
-      "A curated selection of beverages including soft drinks, premium beers, and sparkling or still water.",
-  },
-  {
-    name: "Entertainment",
-    icon: "tv",
-    description:
-      "Relax with flat-screen cable TV and a dedicated DVD player for a complete cinematic experience.",
-  },
-];
+import { services } from "@constants/services";
 ---
 
-<SectionContainer id="services" className="py-24 bg-[#fcfcfc]">
+<SectionContainer id="services" hasScrollMargin className="py-24 bg-[#fcfcfc]">
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-20">
       <h2 class="text-4xl md:text-5xl mb-[0.2rem] font-bold text-gray-900">
@@ -44,31 +20,7 @@ const services = [
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-      {
-        services.map((service) => (
-          <div class="group relative bg-white p-8 md:p-10 rounded-[2.5rem] border border-gray-100 transition-all duration-500 flex flex-col md:flex-row items-center md:items-start gap-8 hover:-translate-y-1">
-            <div class="relative shrink-0">
-              <div class="relative w-20 h-20 flex items-center justify-center rounded-2xl bg-gray-50 group-hover:bg-lime-600 transition-all duration-500 group-hover:ring-1 group-hover:ring-gray-900">
-                <img
-                  src={`/icons/services/${service.icon}.webp`}
-                  alt={service.name}
-                  class="w-10 h-10 object-contain group-hover:brightness-0 group-hover:invert transition-all duration-500"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-
-            <div class="text-center md:text-left">
-              <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-lime-600 transition-colors duration-300">
-                {service.name}
-              </h3>
-              <p class="text-base text-[#555] leading-relaxed font-normal italic opacity-95">
-                {service.description}
-              </p>
-            </div>
-          </div>
-        ))
-      }
+      {services.map((service) => <ServiceCard service={service} />)}
     </div>
   </div>
 </SectionContainer>
