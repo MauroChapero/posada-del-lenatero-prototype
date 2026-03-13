@@ -6,8 +6,15 @@ import HamburgerButton from "@ui/buttons/HamburgerButton.astro";
 import Logo from "@ui/brand/Logo.astro";
 import MobileNavLink from "@features/navigation/MobileNavLink.astro";
 
-import { navLinks } from "@constants/navLinks";
-import type { NavLink as NavLinkType } from "@types";
+import { useTranslations } from "@i18n/utils";
+import { navLinksI18n } from "@i18n/content";
+import type { Locale } from "@i18n/utils";
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const navLinks = navLinksI18n[locale];
+const switchPath = locale === "es" ? "/en/" : "/";
 ---
 
 <header
@@ -25,8 +32,16 @@ import type { NavLink as NavLinkType } from "@types";
             </ul>
 
             <div class="flex items-center gap-4 z-1001">
+                <a
+                    href={switchPath}
+                    data-lang-switch
+                    class="text-sm font-bold uppercase tracking-wider text-gray-600 hover:text-lime-600 transition-colors px-2 py-1"
+                >
+                    {t("lang.switchTo")}
+                </a>
+
                 <div class="hidden sm:block">
-                    <WhatsAppButton text="Book Now!" />
+                    <WhatsAppButton text={t("nav.bookNow")} />
                 </div>
 
                 <HamburgerButton />
@@ -47,7 +62,7 @@ import type { NavLink as NavLinkType } from "@types";
                 </ul>
 
                 <div class="mt-4 sm:hidden">
-                    <WhatsAppButton text="Book Now!" />
+                    <WhatsAppButton text={t("nav.bookNow")} />
                 </div>
             </div>
         </nav>
@@ -55,7 +70,14 @@ import type { NavLink as NavLinkType } from "@types";
 </header>
 
 <script>
-    import "../scripts/navigation.ts";
+    import '../scripts/navigation.ts';
+
+    // Language switcher: persist manual choice
+    document.querySelector("[data-lang-switch]")?.addEventListener("click", () => {
+        try {
+            localStorage.setItem("lang-choice", "manual");
+        } catch (_) {}
+    });
 </script>
 
 <style>

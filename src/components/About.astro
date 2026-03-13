@@ -1,7 +1,14 @@
 ---
 import SectionContainer from "@ui/layout/SectionContainer.astro";
 import RatingItem from "@features/about/RatingItem.astro";
-import { ratings } from "@constants/ratings";
+import { ratingsI18n } from "@i18n/content";
+import { useTranslations } from "@i18n/utils";
+import type { Locale } from "@i18n/utils";
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const ratings = ratingsI18n[locale];
 ---
 
 <SectionContainer
@@ -14,10 +21,10 @@ import { ratings } from "@constants/ratings";
       <h3
         class="text-4xl sm:text-5xl md:text-6xl font-black uppercase leading-[0.9] tracking-tighter"
       >
-        We speak<br /><span class="text-lime-600">your language!</span>
+        {t("about.title.part1")}<br /><span class="text-lime-600">{t("about.title.part2")}</span>
       </h3>
       <p class="text-neutral-500 text-lg md:text-xl font-medium">
-        Top-rated by international guests.
+        {t("about.subtitle")}
       </p>
     </div>
 
@@ -27,7 +34,7 @@ import { ratings } from "@constants/ratings";
       <p
         class="uppercase text-[10px] sm:text-xs font-bold text-lime-600 mb-8 md:mb-10 tracking-[0.2em] text-center sm:text-left"
       >
-        Guest Ratings Summary
+        {t("about.ratingsLabel")}
       </p>
 
       <ul class="grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-10">
