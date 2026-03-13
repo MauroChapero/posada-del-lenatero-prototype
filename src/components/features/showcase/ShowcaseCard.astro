@@ -5,7 +5,15 @@ interface Props extends ShowcaseImage {
     index: number;
 }
 
-const { src, alt, class: className, index } = Astro.props;
+const layoutMap: Record<number, string> = {
+    0: "md:col-span-2 md:row-span-2 h-[400px] md:h-[600px]",
+    1: "md:col-span-1 md:row-span-1 h-[200px] md:h-full",
+    2: "md:col-span-1 md:row-span-1 h-[200px] md:h-full",
+    3: "md:col-span-3 md:row-span-1 h-[250px] md:h-[400px]",
+};
+
+const { src, alt, index } = Astro.props;
+const className = layoutMap[index] ?? "";
 ---
 
 <button
