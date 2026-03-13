@@ -24,6 +24,15 @@
       ],
       "@types": [
         "src/types/index.ts"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
       ]
     }
   }
