@@ -46,7 +46,7 @@ export const servicesI18n: Record<Locale, Service[]> = {
         {
             name: "Entretenimiento",
             icon: "tv",
-            description: "Relajate con TV por cable en pantalla plana y reproductor de DVD para una experiencia cinematográfica completa.",
+            description: "Relajate con tu Smart TV y disfrutá de una experiencia cinematográfica completa desde la comodidad de tu habitación.",
         },
     ],
     en: [
@@ -68,7 +68,7 @@ export const servicesI18n: Record<Locale, Service[]> = {
         {
             name: "Entertainment",
             icon: "tv",
-            description: "Relax with flat-screen cable TV and a dedicated DVD player for a complete cinematic experience.",
+            description: "Relax with your Smart TV and enjoy a full cinematic experience from the comfort of your room.",
         },
     ],
 };
