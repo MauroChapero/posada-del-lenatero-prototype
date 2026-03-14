@@ -22,3 +22,16 @@ export function useTranslations(locale: Locale) {
 export function getLocalePath(locale: Locale): string {
     return locale === defaultLocale ? "" : `/${locale}`;
 }
+
+/** 
+ * Returns the localized country name based on its 2-letter ISO code.
+ * Falls back to the uppercase code if translation is unavailable.
+ */
+export function getCountryName(countryCode: string, locale: Locale): string {
+    try {
+        const displayNames = new Intl.DisplayNames([locale], { type: 'region' });
+        return displayNames.of(countryCode.toUpperCase()) || countryCode.toUpperCase();
+    } catch (e) {
+        return countryCode.toUpperCase();
+    }
+}

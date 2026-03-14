@@ -53,6 +53,7 @@ export const ui = {
         "reviews.subtitle": "Experiencias verificadas de viajeros que hicieron de nuestra casa su hogar cerca del aeropuerto EZE.",
         "reviews.readAll": "Leer las",
         "reviews.reviewsWord": "Reseñas",
+        "reviews.guestFrom": "Huésped de ",
 
         // Footer
         "footer.designBy": "Diseño y Colaboración:",
@@ -113,6 +114,7 @@ export const ui = {
         "reviews.subtitle": "Verified experiences from travelers who have made our house their home near EZE Airport.",
         "reviews.readAll": "Read All",
         "reviews.reviewsWord": "Reviews",
+        "reviews.guestFrom": "Guest from ",
 
         // Footer
         "footer.designBy": "Design & Collaboration:",
