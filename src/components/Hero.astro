@@ -6,9 +6,11 @@ import CTAButton from "@ui/buttons/CTAButton.astro";
 import { useTranslations } from "@i18n/utils";
 import type { Locale } from "@i18n/utils";
 
-interface Props { locale: Locale }
+interface Props {
+    locale: Locale;
+}
 const { locale } = Astro.props;
-const t = useTranslations(locale);
+const translation = useTranslations(locale);
 ---
 
 <SectionContainer
@@ -17,7 +19,7 @@ const t = useTranslations(locale);
 >
     <HeroBackground
         src="images/hero.webp"
-        alt={t("hero.backgroundAlt")}
+        alt={translation("hero.backgroundAlt")}
     />
 
     <div class="relative w-full z-10">
@@ -26,23 +28,30 @@ const t = useTranslations(locale);
                 class="flex flex-col gap-4 md:gap-6 drop-shadow-xl text-center md:text-left items-center md:items-start"
             >
                 <HeroTitle>
-                    {t("hero.title.part1")} <span class="text-lime-600">{t("hero.title.part2")}</span>
+                    <div>
+                        {translation("hero.title.part1")}
+                    </div>
+                    <div>
+                        <span class="text-lime-600"
+                            >{translation("hero.title.part2")}</span
+                        >
+                    </div>
                 </HeroTitle>
 
                 <p
                     class="text-lg md:text-xl lg:text-2xl font-light max-w-xl leading-relaxed opacity-95"
                 >
-                    {t("hero.subtitle")}
+                    {translation("hero.subtitle")}
                     <span
                         class="hidden sm:inline text-base md:text-lg font-semibold text-lime-600 border-l-2 border-lime-600 pl-4 py-1"
                     >
-                        {t("hero.availability")}
+                        {translation("hero.availability")}
                     </span>
                 </p>
 
                 <CTAButton
                     href="https://wa.me/5491128171332"
-                    text={t("hero.cta")}
+                    text={translation("hero.cta")}
                     icon="/icons/whatsapp-icon.svg"
                 />
             </div>
