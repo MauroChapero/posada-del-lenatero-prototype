@@ -27,3 +27,6 @@ pnpm-debug.log*
 .idea/
 .vscode/settings.json
 .vercel
+01-implementation_plan_restructure.md
+.gitignore
+02-implementation_plan_esp.md
