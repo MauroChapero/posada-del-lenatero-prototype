@@ -2,18 +2,24 @@
 import PriceBadge from "@ui/badges/PriceBadge.astro";
 import RateCard from "@features/rates/RateCard.astro";
 import SectionContainer from "@ui/layout/SectionContainer.astro";
+import { useTranslations } from "@i18n/utils";
+import type { Locale } from "@i18n/utils";
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
 ---
 
 <SectionContainer id="rates" hasScrollMargin className="bg-[#f4f4f4] py-16">
     <div class="text-center mb-8">
         <h2 class="text-4xl md:text-5xl mb-[0.2rem] font-bold text-gray-900">
-            Available Rates
+            {t("rates.title")}
         </h2>
-        <p class="text-[0.9rem] text-[#555]">Final prices per night</p>
+        <p class="text-[0.9rem] text-[#555]">{t("rates.subtitle")}</p>
     </div>
     <div class="flex flex-col gap-4">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 order-2 md:order-1">
-            <RateCard title="Standard Single Room" price="$95 USD">
+            <RateCard title={t("rates.standardSingle")} price="$95 USD">
                 <img
                     slot="icons"
                     src="icons/rates/single-bed.webp"
@@ -22,7 +28,7 @@ import SectionContainer from "@ui/layout/SectionContainer.astro";
                 />
             </RateCard>
 
-            <RateCard title="Twin Comfort Room" price="$110 USD">
+            <RateCard title={t("rates.twinComfort")} price="$110 USD">
                 <Fragment slot="icons">
                     <img
                         src="icons/rates/single-bed.webp"
@@ -37,7 +43,7 @@ import SectionContainer from "@ui/layout/SectionContainer.astro";
                 </Fragment>
             </RateCard>
 
-            <RateCard title="King Single Room" price="$105 USD">
+            <RateCard title={t("rates.kingSingle")} price="$105 USD">
                 <img
                     slot="icons"
                     src="icons/rates/single-king-bed.webp"
@@ -54,7 +60,7 @@ import SectionContainer from "@ui/layout/SectionContainer.astro";
                 <span
                     class="absolute -top-3 left-5 bg-lime-600 text-white px-3 py-1 text-[0.7rem] font-black rounded-full shadow-sm"
                 >
-                    ★ MOST POPULAR
+                    {t("rates.mostPopular")}
                 </span>
                 <div
                     class="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-center md:text-left"
@@ -68,10 +74,10 @@ import SectionContainer from "@ui/layout/SectionContainer.astro";
                     </div>
                     <div>
                         <h3 class="text-[1.2rem] font-bold">
-                            King Matrimonial Suite
+                            {t("rates.kingMatrimonial")}
                         </h3>
                         <p class="text-[0.85rem] text-[#666]">
-                            Perfect for couples.
+                            {t("rates.perfectForCouples")}
                         </p>
                     </div>
                 </div>
@@ -80,7 +86,7 @@ import SectionContainer from "@ui/layout/SectionContainer.astro";
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 order-3">
-            <RateCard title="Triple Standard Room" price="$140 USD">
+            <RateCard title={t("rates.tripleStandard")} price="$140 USD">
                 <div
                     slot="icons"
                     class="grid grid-cols-2 gap-1 justify-items-center"
@@ -95,7 +101,7 @@ import SectionContainer from "@ui/layout/SectionContainer.astro";
                 </div>
             </RateCard>
 
-            <RateCard title="Triple Deluxe Room" price="$140 USD">
+            <RateCard title={t("rates.tripleDeluxe")} price="$140 USD">
                 <Fragment slot="icons">
                     <img
                         src="icons/rates/king-matrimonial-bed.webp"
@@ -110,7 +116,7 @@ import SectionContainer from "@ui/layout/SectionContainer.astro";
                 </Fragment>
             </RateCard>
 
-            <RateCard title="Family Suite (4 guests)" price="$150 USD">
+            <RateCard title={t("rates.familySuite")} price="$150 USD">
                 <div slot="icons" class="flex flex-col items-center gap-2">
                     <img
                         src="icons/rates/king-matrimonial-bed.webp"

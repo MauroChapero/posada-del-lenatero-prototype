@@ -1,21 +1,26 @@
 ---
 import SectionContainer from "@ui/layout/SectionContainer.astro";
 import ServiceCard from "@features/services/ServiceCard.astro";
+import { servicesI18n } from "@i18n/content";
+import { useTranslations } from "@i18n/utils";
+import type { Locale } from "@i18n/utils";
 
-import { services } from "@constants/services";
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const services = servicesI18n[locale];
 ---
 
 <SectionContainer id="services" hasScrollMargin className="py-24 bg-[#fcfcfc]">
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-20">
       <h2 class="text-4xl md:text-5xl mb-[0.2rem] font-bold text-gray-900">
-        Amenities <span class="bg-clip-text text-gray-900">& Services</span>
+        {t("services.title")} <span class="bg-clip-text text-gray-900">{t("services.titleAccent")}</span>
       </h2>
       <p
         class="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed font-light"
       >
-        Every detail is thoughtfully curated to provide you with the ultimate
-        comfort and a truly memorable stay.
+        {t("services.subtitle")}
       </p>
     </div>
 

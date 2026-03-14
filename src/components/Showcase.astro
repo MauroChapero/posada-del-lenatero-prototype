@@ -3,8 +3,14 @@
 import SectionContainer from "@ui/layout/SectionContainer.astro";
 import ShowcaseCard from "@features/showcase/ShowcaseCard.astro";
 import GalleryModal from "@features/showcase/GalleryModal.astro";
-import { showcaseImages } from "@constants/showcase";
+import { showcaseImagesI18n } from "@i18n/content";
+import { useTranslations } from "@i18n/utils";
+import type { Locale } from "@i18n/utils";
 
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const showcaseImages = showcaseImagesI18n[locale];
 const featuredImages = showcaseImages.slice(0, 4);
 ---
 
@@ -16,7 +22,7 @@ const featuredImages = showcaseImages.slice(0, 4);
     <h2
       class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight uppercase mb-6"
     >
-      Our <span class="text-lime-600">Showcase</span>
+      {t("showcase.title.part1")} <span class="text-lime-600">{t("showcase.title.part2")}</span>
     </h2>
   </div>
 
@@ -32,14 +38,14 @@ const featuredImages = showcaseImages.slice(0, 4);
     class="mt-12 flex flex-col md:flex-row justify-between items-center gap-6 border-t border-neutral-800 pt-8"
   >
     <p class="text-neutral-500 text-xs uppercase font-bold tracking-widest">
-      Showing {featuredImages.length} of {showcaseImages.length} moments
+      {t("showcase.showing")} {featuredImages.length} {t("showcase.of")} {showcaseImages.length} {t("showcase.moments")}
     </p>
 
     <button
       id="open-gallery"
       class="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-white hover:text-lime-600 transition-colors"
     >
-      View all photos
+      {t("showcase.viewAll")}
       <span
         class="flex items-center justify-center w-10 h-10 rounded-full border border-neutral-700 group-hover:border-lime-600 transition-all"
       >
@@ -61,5 +67,5 @@ const featuredImages = showcaseImages.slice(0, 4);
     </button>
   </div>
 
-  <GalleryModal />
+  <GalleryModal showcaseImages={showcaseImages} />
 </SectionContainer>
