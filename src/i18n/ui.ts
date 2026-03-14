@@ -20,9 +20,9 @@ export const ui = {
         "rates.subtitle": "Precios finales por noche",
         "rates.mostPopular": "★ MÁS POPULAR",
         "rates.perfectForCouples": "Perfecto para parejas.",
-        "rates.standardSingle": "Habitación Single Estándar",
+        "rates.standardSingle": "Habitación Individual Estándar",
         "rates.twinComfort": "Habitación Twin Confort",
-        "rates.kingSingle": "Habitación King Single",
+        "rates.kingSingle": "Habitación King Individual",
         "rates.kingMatrimonial": "Suite King Matrimonial",
         "rates.tripleStandard": "Habitación Triple Estándar",
         "rates.tripleDeluxe": "Habitación Triple Deluxe",
@@ -35,7 +35,7 @@ export const ui = {
         "about.ratingsLabel": "Resumen de Calificaciones",
 
         // Services
-        "services.title": "Amenities",
+        "services.title": "Comodidades",
         "services.titleAccent": "y Servicios",
         "services.subtitle": "Cada detalle está cuidadosamente pensado para brindarte el máximo confort y una estadía inolvidable.",
 
@@ -53,6 +53,7 @@ export const ui = {
         "reviews.subtitle": "Experiencias verificadas de viajeros que hicieron de nuestra casa su hogar cerca del aeropuerto EZE.",
         "reviews.readAll": "Leer las",
         "reviews.reviewsWord": "Reseñas",
+        "reviews.guestFrom": "Huésped de ",
 
         // Footer
         "footer.designBy": "Diseño y Colaboración:",
@@ -113,6 +114,7 @@ export const ui = {
         "reviews.subtitle": "Verified experiences from travelers who have made our house their home near EZE Airport.",
         "reviews.readAll": "Read All",
         "reviews.reviewsWord": "Reviews",
+        "reviews.guestFrom": "Guest from ",
 
         // Footer
         "footer.designBy": "Design & Collaboration:",

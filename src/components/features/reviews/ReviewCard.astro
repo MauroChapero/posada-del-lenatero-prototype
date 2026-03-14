@@ -2,12 +2,17 @@
 import type { Review } from "@types";
 import { Icon } from "astro-icon/components";
 import Stars from "@ui/badges/Stars.astro";
+import { useTranslations, getCountryName } from "@i18n/utils";
+import type { Locale } from "@i18n/utils";
 
 interface Props {
     review: Review;
+    locale: Locale;
 }
 
-const { review } = Astro.props;
+const { review, locale } = Astro.props;
+const t = useTranslations(locale);
+const localizedCountry = getCountryName(review.countryCode, locale);
 ---
 
 <div
@@ -62,7 +67,7 @@ const { review } = Astro.props;
                 {review.name}
             </p>
             <p class="text-xs text-gray-500 font-medium italic">
-                Guest from {review.location}
+                {t("reviews.guestFrom")} {localizedCountry}
             </p>
         </div>
     </div>
