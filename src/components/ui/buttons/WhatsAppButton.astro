@@ -1,4 +1,7 @@
 ---
+import { useTranslations } from "@i18n/utils";
+import type { Locale } from "@i18n/utils";
+
 interface Props {
   href?: string;
   text?: string;
@@ -6,9 +9,12 @@ interface Props {
   variant?: "primary" | "outline";
 }
 
+const currentLocale = (Astro.currentLocale || "es") as Locale;
+const t = useTranslations(currentLocale);
+
 const {
   href = "https://wa.me/5491128171332",
-  text = "Book Now!",
+  text = t("nav.bookNow" as any),
   className = "",
   variant = "primary",
 } = Astro.props;
@@ -34,7 +40,7 @@ const variants = {
   <slot name="icon-before">
     <img
       class="w-5 h-5 brightness-0"
-      src="icons/schedule.webp"
+      src="/icons/schedule.webp"
       alt=""
       aria-hidden="true"
     />

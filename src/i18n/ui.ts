@@ -28,6 +28,12 @@ export const ui = {
         "rates.tripleDeluxe": "Habitación Triple Deluxe",
         "rates.familySuite": "Suite Familiar (4 huéspedes)",
 
+        // Rates Icons (Alt text)
+        "rates.alt.singleBed": "Cama individual",
+        "rates.alt.twinBed": "Cama twin",
+        "rates.alt.kingSingleBed": "Cama King Individual",
+        "rates.alt.kingMatrimonialBed": "Cama King Matrimonial",
+
         // About
         "about.title.part1": "Hablamos",
         "about.title.part2": "tu idioma!",
@@ -61,6 +67,9 @@ export const ui = {
         // Nav
         "nav.bookNow": "¡Reservá!",
 
+        // Brand
+        "brand.alt.logo": "Logo Posada Leñatero",
+
         // Language switcher
         "lang.switchTo": "EN",
     },
@@ -88,6 +97,12 @@ export const ui = {
         "rates.tripleStandard": "Triple Standard Room",
         "rates.tripleDeluxe": "Triple Deluxe Room",
         "rates.familySuite": "Family Suite (4 guests)",
+
+        // Rates Icons (Alt text)
+        "rates.alt.singleBed": "Single bed",
+        "rates.alt.twinBed": "Twin bed",
+        "rates.alt.kingSingleBed": "King Single bed",
+        "rates.alt.kingMatrimonialBed": "King Matrimonial bed",
 
         // About
         "about.title.part1": "We speak",
@@ -121,6 +136,9 @@ export const ui = {
 
         // Nav
         "nav.bookNow": "Book Now!",
+
+        // Brand
+        "brand.alt.logo": "Posada Leñatero Logo",
 
         // Language switcher
         "lang.switchTo": "ES",

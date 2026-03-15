@@ -9,6 +9,7 @@
 ## Mobile
 - [x] Fix navbar bottom white line
 - [x] Fix "Check Availability" Hero button
+- [ ] Fix mobile hero subtitle layout
 
 ## Feedback Cliente
 - [ ] Hero/Mod - Rest and comfort -> Rest and Travel
