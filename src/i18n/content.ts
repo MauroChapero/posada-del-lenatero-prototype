@@ -39,9 +39,10 @@ export const servicesI18n: Record<Locale, Service[]> = {
             description: "Empezá tu mañana con nuestra selección de productos locales frescos y café premium.",
         },
         {
-            name: "Bar de Bebidas",
-            icon: "glass",
-            description: "Una selección curada de bebidas incluyendo gaseosas, cervezas premium y agua con o sin gas.",
+            name: "Estacionamiento en el lugar",
+            icon: "car",
+            description: "Estacionamiento privado y seguro disponible para tu vehículo durante tu estadía.",
+            isAdditional: true,
         },
         {
             name: "Entretenimiento",
@@ -61,9 +62,10 @@ export const servicesI18n: Record<Locale, Service[]> = {
             description: "Start your morning beautifully with our signature selection of fresh local products and premium coffee.",
         },
         {
-            name: "Refreshment Bar",
-            icon: "glass",
-            description: "A curated selection of beverages including soft drinks, premium beers, and sparkling or still water.",
+            name: "On-site Parking",
+            icon: "car",
+            description: "Secure on-site parking available for your vehicle during your stay.",
+            isAdditional: true,
         },
         {
             name: "Entertainment",

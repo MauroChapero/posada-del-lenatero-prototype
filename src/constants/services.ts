@@ -14,10 +14,11 @@ export const services: Service[] = [
             "Start your morning beautifully with our signature selection of fresh local products and premium coffee.",
     },
     {
-        name: "Refreshment Bar",
-        icon: "glass",
+        name: "On-site Parking",
+        icon: "car",
         description:
-            "A curated selection of beverages including soft drinks, premium beers, and sparkling or still water.",
+            "Secure on-site parking available for your vehicle during your stay.",
+        isAdditional: true,
     },
     {
         name: "Entertainment",
