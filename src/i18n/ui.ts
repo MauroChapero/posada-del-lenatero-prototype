@@ -44,6 +44,7 @@ export const ui = {
         "services.title": "Comodidades",
         "services.titleAccent": "y Servicios",
         "services.subtitle": "Cada detalle está cuidadosamente pensado para brindarte el máximo confort y una estadía inolvidable.",
+        "services.additional": "+ Costo adicional",
 
         // Showcase
         "showcase.title.part1": "Nuestra",
@@ -114,6 +115,7 @@ export const ui = {
         "services.title": "Amenities",
         "services.titleAccent": "& Services",
         "services.subtitle": "Every detail is thoughtfully curated to provide you with the ultimate comfort and a truly memorable stay.",
+        "services.additional": "+ Additional cost",
 
         // Showcase
         "showcase.title.part1": "Our",

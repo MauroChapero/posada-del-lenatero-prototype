@@ -25,7 +25,7 @@ const services = servicesI18n[locale];
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-      {services.map((service) => <ServiceCard service={service} />)}
+      {services.map((service) => <ServiceCard service={service} locale={locale} />)}
     </div>
   </div>
 </SectionContainer>
