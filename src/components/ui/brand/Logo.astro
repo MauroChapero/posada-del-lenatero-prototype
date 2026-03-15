@@ -1,12 +1,19 @@
 ---
+import { useTranslations } from "@i18n/utils";
+import type { Locale } from "@i18n/utils";
+
 // Puedes pasarle clases extra si necesitas modificar su tamaño desde el padre
 const { class: className } = Astro.props;
+
+// Usar el locale actual o español por defecto
+const currentLocale = (Astro.currentLocale || "es") as Locale;
+const t = useTranslations(currentLocale);
 ---
 
 <a href="/" class={`shrink-0 ${className}`}>
     <img
         src="/icons/posadas-navbar-icon.webp"
-        alt="Logo Posadas"
+        alt={t("brand.alt.logo" as any)}
         class="h-10 md:h-12 w-auto"
     />
 </a>

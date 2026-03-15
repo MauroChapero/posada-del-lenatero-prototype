@@ -4,10 +4,18 @@ import RateCard from "@features/rates/RateCard.astro";
 import SectionContainer from "@ui/layout/SectionContainer.astro";
 import { useTranslations } from "@i18n/utils";
 import type { Locale } from "@i18n/utils";
+import { ratesList } from "@constants/rates";
+import type { RateIcon } from "@types";
 
-interface Props { locale: Locale }
+interface Props {
+    locale: Locale;
+}
 const { locale } = Astro.props;
 const t = useTranslations(locale);
+
+// Pre-compute translated values correctly grouping common vs featured
+const regularRates = ratesList.filter((r) => !r.isPopular);
+const featuredRate = ratesList.find((r) => r.isPopular);
 ---
 
 <SectionContainer id="rates" hasScrollMargin className="bg-[#f4f4f4] py-16">
@@ -17,127 +25,86 @@ const t = useTranslations(locale);
         </h2>
         <p class="text-[0.9rem] text-[#555]">{t("rates.subtitle")}</p>
     </div>
+
     <div class="flex flex-col gap-4">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 order-2 md:order-1">
-            <RateCard title={t("rates.standardSingle")} price="$95 USD">
-                <img
-                    slot="icons"
-                    src="icons/rates/single-bed.webp"
-                    alt="Single bed"
-                    width="86"
-                />
-            </RateCard>
-
-            <RateCard title={t("rates.twinComfort")} price="$110 USD">
-                <Fragment slot="icons">
-                    <img
-                        src="icons/rates/single-bed.webp"
-                        class="w-11.25 h-auto"
-                        alt="Twin 1"
-                    />
-                    <img
-                        src="icons/rates/single-bed.webp"
-                        class="w-11.25 h-auto"
-                        alt="Twin 2"
-                    />
-                </Fragment>
-            </RateCard>
-
-            <RateCard title={t("rates.kingSingle")} price="$105 USD">
-                <img
-                    slot="icons"
-                    src="icons/rates/single-king-bed.webp"
-                    alt="King Single Bed"
-                    width="86"
-                />
-            </RateCard>
+            {
+                regularRates.slice(0, 3).map((rate) => (
+                    <RateCard title={t(rate.titleKey as any)} price={rate.price}>
+                        <div slot="icons" class={rate.layout === "family" ? "flex flex-col items-center gap-2" : "flex items-center gap-1"}>
+                            {rate.icons.map((icon: RateIcon) => (
+                                <img
+                                    src={icon.src}
+                                    class={icon.colSpan ? `col-span-${icon.colSpan} w-7 h-auto` : "w-[43px] h-auto"}
+                                    alt={t(icon.altKey as any)}
+                                />
+                            ))}
+                        </div>
+                    </RateCard>
+                ))
+            }
         </div>
 
-        <div class="w-full order-1 md:order-2 my-2 md:my-0">
-            <article
-                class="relative bg-white rounded-[15px] p-6 md:px-10 flex flex-col md:flex-row items-center justify-between shadow-md border-2 border-lime-600"
-            >
-                <span
-                    class="absolute -top-3 left-5 bg-lime-600 text-white px-3 py-1 text-[0.7rem] font-black rounded-full shadow-sm"
-                >
-                    {t("rates.mostPopular")}
-                </span>
-                <div
-                    class="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-center md:text-left"
-                >
-                    <div class="h-20 flex items-center">
-                        <img
-                            src="icons/rates/king-matrimonial-bed.webp"
-                            alt="King Matrimonial"
-                            width="86"
-                        />
-                    </div>
-                    <div>
-                        <h3 class="text-[1.2rem] font-bold">
-                            {t("rates.kingMatrimonial")}
-                        </h3>
-                        <p class="text-[0.85rem] text-[#666]">
-                            {t("rates.perfectForCouples")}
-                        </p>
-                    </div>
+        {
+            featuredRate && (
+                <div class="w-full order-1 md:order-2 my-2 md:my-0">
+                    <article class="relative bg-white rounded-[15px] p-6 md:px-10 flex flex-col md:flex-row items-center justify-between shadow-md border-2 border-lime-600">
+                        <span class="absolute -top-3 left-5 bg-lime-600 text-white px-3 py-1 text-[0.7rem] font-black rounded-full shadow-sm">
+                            {t("rates.mostPopular")}
+                        </span>
+                        <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-center md:text-left">
+                            <div class="h-20 flex items-center gap-2">
+                                {featuredRate.icons.map((icon: RateIcon) => (
+                                    <img
+                                        src={icon.src}
+                                        alt={t(icon.altKey as any)}
+                                        class="w-[86px] h-auto"
+                                    />
+                                ))}
+                            </div>
+                            <div>
+                                <h3 class="text-[1.2rem] font-bold">
+                                    {t(featuredRate.titleKey as any)}
+                                </h3>
+                                {featuredRate.descriptionKey && (
+                                    <p class="text-[0.85rem] text-[#666]">
+                                        {t(featuredRate.descriptionKey as any)}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                        <PriceBadge price={featuredRate.price} isFeatured />
+                    </article>
                 </div>
-                <PriceBadge price="$125 USD" isFeatured />
-            </article>
-        </div>
+            )
+        }
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 order-3">
-            <RateCard title={t("rates.tripleStandard")} price="$140 USD">
-                <div
-                    slot="icons"
-                    class="grid grid-cols-2 gap-1 justify-items-center"
-                >
-                    <img src="icons/rates/single-bed.webp" class="w-7 h-auto" />
-                    <img src="icons/rates/single-bed.webp" class="w-7 h-auto" />
-
-                    <img
-                        src="icons/rates/single-bed.webp"
-                        class="w-7 h-auto col-span-2"
-                    />
-                </div>
-            </RateCard>
-
-            <RateCard title={t("rates.tripleDeluxe")} price="$140 USD">
-                <Fragment slot="icons">
-                    <img
-                        src="icons/rates/king-matrimonial-bed.webp"
-                        class="w-11.25 h-auto"
-                        alt="King Matrimonial Bed"
-                    />
-                    <img
-                        src="icons/rates/single-bed.webp"
-                        class="w-11.25 h-auto"
-                        alt="Twin 2"
-                    />
-                </Fragment>
-            </RateCard>
-
-            <RateCard title={t("rates.familySuite")} price="$150 USD">
-                <div slot="icons" class="flex flex-col items-center gap-2">
-                    <img
-                        src="icons/rates/king-matrimonial-bed.webp"
-                        class="w-14 h-auto"
-                        alt="King Matrimonial Bed"
-                    />
-
-                    <div class="flex gap-2">
-                        <img
-                            src="icons/rates/single-bed.webp"
-                            class="w-9 h-auto"
-                            alt="Twin 1"
-                        />
-                        <img
-                            src="icons/rates/single-bed.webp"
-                            class="w-9 h-auto"
-                            alt="Twin 2"
-                        />
-                    </div>
-                </div>
-            </RateCard>
+            {
+                regularRates.slice(3).map((rate) => (
+                    <RateCard title={t(rate.titleKey as any)} price={rate.price}>
+                        {rate.layout === "family" ? (
+                            <div slot="icons" class="flex flex-col items-center gap-2">
+                                <img src={rate.icons[0].src} class="w-14 h-auto" alt={t(rate.icons[0].altKey as any)} />
+                                <div class="flex gap-2">
+                                    <img src={rate.icons[1].src} class="w-9 h-auto" alt={t(rate.icons[1].altKey as any)} />
+                                    <img src={rate.icons[2].src} class="w-9 h-auto" alt={t(rate.icons[2].altKey as any)} />
+                                </div>
+                            </div>
+                        ) : (
+                            <div slot="icons" class="flex gap-1 justify-center items-center flex-wrap">
+                                {rate.icons.map((icon: RateIcon) => (
+                                    <img
+                                        src={icon.src}
+                                        class={icon.colSpan ? `w-14 h-auto mt-1` : "w-[43px] h-auto"}
+                                        alt={t(icon.altKey as any)}
+                                    />
+                                ))}
+                            </div>
+                        )}
+                    </RateCard>
+                ))
+            }
         </div>
     </div>
 </SectionContainer>
