@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import type { ShowcaseImage } from "@types";
 
 interface Props extends ShowcaseImage {
@@ -29,11 +30,13 @@ const className = layoutMap[index] ?? "";
     >
     </div>
 
-    <img
+    <Image
         src={src}
         alt={alt}
         class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
         loading="lazy"
+        widths={[400, 640, 960]}
+        sizes="(max-width: 768px) 100vw, 50vw"
     />
 
     <div

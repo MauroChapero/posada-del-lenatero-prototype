@@ -4,45 +4,54 @@ const menuToggle = document.getElementById("menu-toggle");
 const mobileMenu = document.getElementById("mobile-menu");
 const menuLinks = document.querySelectorAll<HTMLAnchorElement>(".mobile-link");
 
-/** Bloquea el evento por defecto (usado para deshabilitar scroll). */
-function preventDefault(e: Event): void {
-    e.preventDefault();
-}
+const LG_BREAKPOINT = 1024;
 
-/** Abre o cierra el menú móvil y gestiona el bloqueo de scroll. */
-function toggleMenu(): void {
+/** Opens the mobile menu and locks body scroll. */
+function openMenu(): void {
     if (!mobileMenu || !menuToggle) return;
 
-    const isMenuOpen = !mobileMenu.classList.contains("translate-x-full");
-
-    if (isMenuOpen) {
-        // CERRAR
-        mobileMenu.classList.add("translate-x-full");
-        menuToggle.classList.remove("active");
-
-        // Habilitamos el scroll de nuevo
-        window.removeEventListener("wheel", preventDefault);
-        window.removeEventListener("touchmove", preventDefault);
-    } else {
-        // ABRIR
-        mobileMenu.classList.remove("translate-x-full");
-        menuToggle.classList.add("active");
-
-        // Bloqueamos el scroll del "fondo" pero permitimos el del menú
-        window.addEventListener("wheel", preventDefault, { passive: false });
-        window.addEventListener("touchmove", preventDefault, { passive: false });
-    }
+    mobileMenu.classList.remove("translate-x-full");
+    menuToggle.classList.add("active");
+    menuToggle.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
 }
 
+/** Closes the mobile menu and restores body scroll. */
+function closeMenu(): void {
+    if (!mobileMenu || !menuToggle) return;
+
+    mobileMenu.classList.add("translate-x-full");
+    menuToggle.classList.remove("active");
+    menuToggle.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+}
+
+/** Toggles the mobile menu open/closed. */
+function toggleMenu(): void {
+    if (!mobileMenu) return;
+    const isOpen = !mobileMenu.classList.contains("translate-x-full");
+    isOpen ? closeMenu() : openMenu();
+}
+
+// Hamburger button click
 menuToggle?.addEventListener("click", toggleMenu);
 
+// Close menu when a nav link is clicked
 menuLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-        // Importante: Liberar el scroll antes de navegar
-        window.removeEventListener("wheel", preventDefault);
-        window.removeEventListener("touchmove", preventDefault);
+    link.addEventListener("click", closeMenu);
+});
 
-        mobileMenu?.classList.add("translate-x-full");
-        menuToggle?.classList.remove("active");
-    });
+// Close menu on Escape key (WCAG keyboard accessibility)
+document.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (e.key === "Escape" && mobileMenu && !mobileMenu.classList.contains("translate-x-full")) {
+        closeMenu();
+        menuToggle?.focus(); // Return focus to the toggle button
+    }
+});
+
+// Auto-close menu when viewport crosses the lg breakpoint (e.g. tablet rotation)
+window.addEventListener("resize", () => {
+    if (window.innerWidth >= LG_BREAKPOINT && mobileMenu && !mobileMenu.classList.contains("translate-x-full")) {
+        closeMenu();
+    }
 });
