@@ -28,14 +28,7 @@ const translation = useTranslations(locale);
                 class="flex flex-col gap-4 md:gap-6 drop-shadow-xl text-center md:text-left items-center md:items-start"
             >
                 <HeroTitle>
-                    <div>
-                        {translation("hero.title.part1")}
-                    </div>
-                    <div>
-                        <span class="text-lime-600"
-                            >{translation("hero.title.part2")}</span
-                        >
-                    </div>
+                    {translation("hero.title" as any)}
                 </HeroTitle>
 
                 <p

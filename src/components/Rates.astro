@@ -35,7 +35,7 @@ const featuredRate = ratesList.find((r) => r.isPopular);
                             {rate.icons.map((icon: RateIcon) => (
                                 <img
                                     src={icon.src}
-                                    class={icon.colSpan ? `col-span-${icon.colSpan} w-7 h-auto` : "w-[43px] h-auto"}
+                                    class="w-[43px] h-auto"
                                     alt={t(icon.altKey as any)}
                                 />
                             ))}
@@ -96,7 +96,7 @@ const featuredRate = ratesList.find((r) => r.isPopular);
                                 {rate.icons.map((icon: RateIcon) => (
                                     <img
                                         src={icon.src}
-                                        class={icon.colSpan ? `w-14 h-auto mt-1` : "w-[43px] h-auto"}
+                                        class="w-[43px] h-auto"
                                         alt={t(icon.altKey as any)}
                                     />
                                 ))}

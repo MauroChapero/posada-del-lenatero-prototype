@@ -5,11 +5,13 @@
 export const ui = {
     es: {
         // Layout
-        "layout.description": "Posada Leñatero: Descanso y confort cerca del aeropuerto. Habitaciones cómodas y ambiente familiar.",
+        "layout.description": "Posada del Leñatero: Descanso y confort cerca del aeropuerto. Habitaciones cómodas y ambiente familiar.",
+
+        // Brand
+        "brand.name": "Posada del Leñatero",
 
         // Hero
-        "hero.title.part1": "Descanso",
-        "hero.title.part2": "cerca del aeropuerto",
+        "hero.title": "Bed & Breakfast",
         "hero.subtitle": "Habitaciones cómodas en un lugar cálido y familiar.",
         "hero.availability": "Consultá disponibilidad y tarifas por WhatsApp.",
         "hero.cta": "Chateá con nosotros",
@@ -19,14 +21,13 @@ export const ui = {
         "rates.title": "Tarifas Disponibles",
         "rates.subtitle": "Precios finales por noche",
         "rates.mostPopular": "★ MÁS POPULAR",
-        "rates.perfectForCouples": "Perfecto para parejas.",
-        "rates.standardSingle": "Habitación Individual Estándar",
-        "rates.twinComfort": "Habitación Twin Confort",
-        "rates.kingSingle": "Habitación King Individual",
-        "rates.kingMatrimonial": "Suite King Matrimonial",
-        "rates.tripleStandard": "Habitación Triple Estándar",
-        "rates.tripleDeluxe": "Habitación Triple Deluxe",
-        "rates.familySuite": "Suite Familiar (4 huéspedes)",
+        "rates.singleStandard": "Single Standard",
+        "rates.singleEspecialKing": "Single Especial King",
+        "rates.dobleKingStandard": "Doble King Standard",
+        "rates.dobleMatrimonialKing": "Doble Matrimonial King",
+        "rates.tripleStandard": "Triple Standard",
+        "rates.tripleEspecial": "Triple Especial",
+        "rates.suiteFamiliar": "Suite Familiar",
 
         // Rates Icons (Alt text)
         "rates.alt.singleBed": "Cama individual",
@@ -43,7 +44,14 @@ export const ui = {
         // Services
         "services.title": "Comodidades",
         "services.titleAccent": "y Servicios",
-        "services.subtitle": "Cada detalle está cuidadosamente pensado para brindarte el máximo confort y una estadía inolvidable.",
+        "services.subtitle": "Habitaciones equipadas con:",
+        "services.list.toiletries": "Artículos de aseo",
+        "services.list.towels": "Juego de toallas",
+        "services.list.aircon": "Aire acondicionado frío/calor",
+        "services.list.smarttv": "Smart TV",
+        "services.list.parking": "Cochera",
+        "services.list.reception": "Recepción 24hs",
+        "services.list.transfer": "Traslados in/out al aeropuerto de Ezeiza",
         "services.additional": "+ Costo adicional",
 
         // Showcase
@@ -79,8 +87,7 @@ export const ui = {
         "layout.description": "Posada Leñatero: Rest and comfort near the airport. Comfortable rooms and family-friendly atmosphere.",
 
         // Hero
-        "hero.title.part1": "Rest",
-        "hero.title.part2": "near the airport",
+        "hero.title": "Rest near the airport",
         "hero.subtitle": "Comfortable rooms in a warm, family-friendly place.",
         "hero.availability": "Check availability and rates on WhatsApp.",
         "hero.cta": "Chat with us now",
@@ -90,14 +97,13 @@ export const ui = {
         "rates.title": "Available Rates",
         "rates.subtitle": "Final prices per night",
         "rates.mostPopular": "★ MOST POPULAR",
-        "rates.perfectForCouples": "Perfect for couples.",
-        "rates.standardSingle": "Standard Single Room",
-        "rates.twinComfort": "Twin Comfort Room",
-        "rates.kingSingle": "King Single Room",
-        "rates.kingMatrimonial": "King Matrimonial Suite",
-        "rates.tripleStandard": "Triple Standard Room",
-        "rates.tripleDeluxe": "Triple Deluxe Room",
-        "rates.familySuite": "Family Suite (4 guests)",
+        "rates.singleStandard": "Single Standard",
+        "rates.singleEspecialKing": "Single Especial King",
+        "rates.dobleKingStandard": "Doble King Standard",
+        "rates.dobleMatrimonialKing": "Doble Matrimonial King",
+        "rates.tripleStandard": "Triple Standard",
+        "rates.tripleEspecial": "Triple Especial",
+        "rates.suiteFamiliar": "Family Suite",
 
         // Rates Icons (Alt text)
         "rates.alt.singleBed": "Single bed",
@@ -114,7 +120,14 @@ export const ui = {
         // Services
         "services.title": "Amenities",
         "services.titleAccent": "& Services",
-        "services.subtitle": "Every detail is thoughtfully curated to provide you with the ultimate comfort and a truly memorable stay.",
+        "services.subtitle": "Rooms equipped with:",
+        "services.list.toiletries": "Toiletries",
+        "services.list.towels": "Towel set",
+        "services.list.aircon": "Hot/Cold Air Conditioning",
+        "services.list.smarttv": "Smart TV",
+        "services.list.parking": "Parking",
+        "services.list.reception": "24hr Reception",
+        "services.list.transfer": "In/Out transfers to Ezeiza Airport",
         "services.additional": "+ Additional cost",
 
         // Showcase

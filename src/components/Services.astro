@@ -20,8 +20,18 @@ const services = servicesI18n[locale];
       <p
         class="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed font-light"
       >
-        {t("services.subtitle")}
+        {t("services.subtitle" as any)}
       </p>
+
+      <ul class="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3 max-w-4xl mx-auto text-[1.1rem] text-gray-700 font-medium">
+        <li class="flex items-center gap-2"><span class="text-lime-600 text-xl">✓</span> {t("services.list.toiletries" as any)}</li>
+        <li class="flex items-center gap-2"><span class="text-lime-600 text-xl">✓</span> {t("services.list.towels" as any)}</li>
+        <li class="flex items-center gap-2"><span class="text-lime-600 text-xl">✓</span> {t("services.list.aircon" as any)}</li>
+        <li class="flex items-center gap-2"><span class="text-lime-600 text-xl">✓</span> {t("services.list.smarttv" as any)}</li>
+        <li class="flex items-center gap-2"><span class="text-lime-600 text-xl">✓</span> {t("services.list.parking" as any)}</li>
+        <li class="flex items-center gap-2"><span class="text-lime-600 text-xl">✓</span> {t("services.list.reception" as any)}</li>
+        <li class="flex items-center gap-2"><span class="text-lime-600 text-xl">✓</span> {t("services.list.transfer" as any)}</li>
+      </ul>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">

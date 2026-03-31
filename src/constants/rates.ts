@@ -1,35 +1,36 @@
 import type { Rate } from "@types";
 
 export const ratesList: Rate[] = [
+    // --- Fila 1 ---
     {
-        id: "standardSingle",
-        titleKey: "rates.standardSingle",
+        id: "singleStandard",
+        titleKey: "rates.singleStandard",
         price: "$95 USD",
         icons: [{ src: "/icons/rates/single-bed.webp", altKey: "rates.alt.singleBed" }],
     },
     {
-        id: "twinComfort",
-        titleKey: "rates.twinComfort",
-        price: "$110 USD",
-        icons: [
-            { src: "/icons/rates/single-bed.webp", altKey: "rates.alt.singleBed" },
-            { src: "/icons/rates/single-bed.webp", altKey: "rates.alt.singleBed" },
-        ],
-    },
-    {
-        id: "kingSingle",
-        titleKey: "rates.kingSingle",
+        id: "singleEspecialKing",
+        titleKey: "rates.singleEspecialKing",
         price: "$105 USD",
         icons: [{ src: "/icons/rates/single-king-bed.webp", altKey: "rates.alt.kingSingleBed" }],
     },
     {
-        id: "kingMatrimonial",
-        titleKey: "rates.kingMatrimonial",
+        id: "dobleKingStandard",
+        titleKey: "rates.dobleKingStandard",
+        price: "$110 USD",
+        icons: [{ src: "/icons/rates/single-king-bed.webp", altKey: "rates.alt.kingSingleBed" }],
+    },
+
+    // --- Fila 2 ---
+    {
+        id: "dobleMatrimonialKing",
+        titleKey: "rates.dobleMatrimonialKing",
         price: "$125 USD",
         isPopular: true,
-        descriptionKey: "rates.perfectForCouples",
         icons: [{ src: "/icons/rates/king-matrimonial-bed.webp", altKey: "rates.alt.kingMatrimonialBed" }],
     },
+
+    // --- Fila 3 ---
     {
         id: "tripleStandard",
         titleKey: "rates.tripleStandard",
@@ -37,12 +38,12 @@ export const ratesList: Rate[] = [
         icons: [
             { src: "/icons/rates/single-bed.webp", altKey: "rates.alt.singleBed" },
             { src: "/icons/rates/single-bed.webp", altKey: "rates.alt.singleBed" },
-            { src: "/icons/rates/single-bed.webp", altKey: "rates.alt.singleBed", colSpan: 2 },
+            { src: "/icons/rates/single-bed.webp", altKey: "rates.alt.singleBed" },
         ],
     },
     {
-        id: "tripleDeluxe",
-        titleKey: "rates.tripleDeluxe",
+        id: "tripleEspecial",
+        titleKey: "rates.tripleEspecial",
         price: "$140 USD",
         icons: [
             { src: "/icons/rates/king-matrimonial-bed.webp", altKey: "rates.alt.kingMatrimonialBed" },
@@ -50,8 +51,8 @@ export const ratesList: Rate[] = [
         ],
     },
     {
-        id: "familySuite",
-        titleKey: "rates.familySuite",
+        id: "suiteFamiliar",
+        titleKey: "rates.suiteFamiliar",
         price: "$150 USD",
         icons: [
             { src: "/icons/rates/king-matrimonial-bed.webp", altKey: "rates.alt.kingMatrimonialBed" },

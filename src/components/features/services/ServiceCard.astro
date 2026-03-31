@@ -38,17 +38,30 @@ const t = useTranslations(locale);
                 {service.name}
             </h3>
             {
-                service.isAdditional && (
+                service.isAdditional && !service.hasCta && (
                     <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-lime-600 text-white border border-lime-600 shrink-0">
-                        {t("services.additional")}
+                        {t("services.additional" as any)}
                     </span>
                 )
             }
+            {
+                service.hasCta && (
+                    <a 
+                        href="https://wa.me/5491128171332" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full bg-lime-600 text-white border border-lime-600 shrink-0 hover:bg-lime-700 transition-colors shadow-sm"
+                    >
+                        <img src="/icons/whatsapp-icon.svg" alt="WhatsApp" class="w-3.5 h-3.5 invert brightness-0" />
+                        Consulte promos vigentes
+                    </a>
+                )
+            }
         </div>
-        <p
-            class="text-base text-[#555] leading-relaxed font-normal italic opacity-95"
-        >
-            {service.description}
-        </p>
+        {service.description && (
+            <p class="text-base text-[#555] leading-relaxed font-normal italic opacity-95">
+                {service.description}
+            </p>
+        )}
     </div>
 </div>

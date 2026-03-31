@@ -31,18 +31,17 @@ export const servicesI18n: Record<Locale, Service[]> = {
         {
             name: "WiFi de Alta Velocidad",
             icon: "wifi",
-            description: "Disfrutá de conectividad sin interrupciones en todo el establecimiento con nuestra red de fibra óptica dedicada.",
+            description: "Disfrutá de conectividad sin interrupciones en todo el establecimiento con nuestra red de fibra óptica.",
         },
         {
             name: "Desayuno Continental",
             icon: "coffee",
-            description: "Empezá tu mañana con nuestra selección de productos locales frescos y café premium.",
         },
         {
-            name: "Estacionamiento en el lugar",
+            name: "Estacionamiento Larga Estadía",
             icon: "car",
-            description: "Estacionamiento privado y seguro disponible para tu vehículo durante tu estadía.",
-            isAdditional: true,
+            description: "Estacionamiento privado y seguro disponible para tu vehículo durante tu viaje.",
+            hasCta: true,
         },
         {
             name: "Entretenimiento",
@@ -54,18 +53,17 @@ export const servicesI18n: Record<Locale, Service[]> = {
         {
             name: "High-Speed WiFi",
             icon: "wifi",
-            description: "Enjoy seamless connectivity throughout the entire premises with our dedicated fiber optic network.",
+            description: "Enjoy seamless connectivity throughout the entire premises with our fiber optic network.",
         },
         {
             name: "Continental Breakfast",
             icon: "coffee",
-            description: "Start your morning beautifully with our signature selection of fresh local products and premium coffee.",
         },
         {
-            name: "On-site Parking",
+            name: "Long-Term Parking",
             icon: "car",
-            description: "Secure on-site parking available for your vehicle during your stay.",
-            isAdditional: true,
+            description: "Secure private parking available for your vehicle during your trip.",
+            hasCta: true,
         },
         {
             name: "Entertainment",
