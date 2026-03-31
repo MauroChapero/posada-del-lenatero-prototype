@@ -90,18 +90,23 @@ export const ratingsI18n: Record<Locale, Rating[]> = {
 };
 
 // ── Showcase ───────────────────────────────────────────────
+import bedroomImg from "@assets/showcase/bedroom.webp";
+import breakfastImg from "@assets/showcase/breakfast.webp";
+import bathroomImg from "@assets/showcase/bathroom.webp";
+import gardenImg from "@assets/showcase/garden.webp";
+
 export const showcaseImagesI18n: Record<Locale, ShowcaseImage[]> = {
     es: [
-        { src: "/images/showcase/bedroom.webp", alt: "Suite Principal de Lujo" },
-        { src: "/images/showcase/breakfast.webp", alt: "Desayuno Gourmet" },
-        { src: "/images/showcase/bathroom.webp", alt: "Baño Privado Moderno" },
-        { src: "/images/showcase/garden.webp", alt: "Área de Relax al Aire Libre" },
+        { src: bedroomImg, alt: "Suite Principal de Lujo" },
+        { src: breakfastImg, alt: "Desayuno Gourmet" },
+        { src: bathroomImg, alt: "Baño Privado Moderno" },
+        { src: gardenImg, alt: "Área de Relax al Aire Libre" },
     ],
     en: [
-        { src: "/images/showcase/bedroom.webp", alt: "Luxurious Master Suite" },
-        { src: "/images/showcase/breakfast.webp", alt: "Gourmet Breakfast" },
-        { src: "/images/showcase/bathroom.webp", alt: "Modern Private Bathroom" },
-        { src: "/images/showcase/garden.webp", alt: "Outdoor Relax Area" },
+        { src: bedroomImg, alt: "Luxurious Master Suite" },
+        { src: breakfastImg, alt: "Gourmet Breakfast" },
+        { src: bathroomImg, alt: "Modern Private Bathroom" },
+        { src: gardenImg, alt: "Outdoor Relax Area" },
     ],
 };
 

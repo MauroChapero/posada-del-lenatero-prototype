@@ -1,6 +1,18 @@
 ---
-// src/components/ui/showcase/GalleryModal.astro
-import { showcaseImages } from "@constants/showcase";
+import type { ShowcaseImage } from "@types";
+
+interface Props {
+    showcaseImages: ShowcaseImage[];
+}
+
+const { showcaseImages } = Astro.props;
+
+// Extract plain { src, alt } objects for the client-side script.
+// ImageMetadata.src is the resolved URL string after Astro processes the import.
+const galleryData = showcaseImages.map((img) => ({
+    src: typeof img.src === "string" ? img.src : img.src.src,
+    alt: img.alt,
+}));
 ---
 
 <div
@@ -12,6 +24,7 @@ import { showcaseImages } from "@constants/showcase";
     <button
         id="close-gallery"
         class="absolute top-6 right-6 text-white hover:text-lime-600 z-110"
+        aria-label="Close gallery"
     >
         <svg
             class="w-10 h-10"
@@ -38,6 +51,7 @@ import { showcaseImages } from "@constants/showcase";
         <button
             id="prev-img"
             class="absolute left-4 md:left-10 p-4 text-white/50 hover:text-lime-600 transition-colors"
+            aria-label="Previous image"
         >
             <svg
                 class="w-12 h-12"
@@ -55,6 +69,7 @@ import { showcaseImages } from "@constants/showcase";
         <button
             id="next-img"
             class="absolute right-4 md:right-10 p-4 text-white/50 hover:text-lime-600 transition-colors"
+            aria-label="Next image"
         >
             <svg
                 class="w-12 h-12"
@@ -79,9 +94,7 @@ import { showcaseImages } from "@constants/showcase";
     </div>
 </div>
 
-<script define:vars={{ showcaseImages }}>
-    // Aquí pegas la lógica de JavaScript que ya tenías,
-    // asegurándote de usar 'showcaseImages' en lugar de 'allImages'
+<script define:vars={{ galleryData }}>
     const modal = document.getElementById("gallery-modal");
     const modalImg = document.getElementById("modal-img");
     const modalCaption = document.getElementById("modal-caption");
@@ -94,8 +107,8 @@ import { showcaseImages } from "@constants/showcase";
     let currentIndex = 0;
 
     function updateModal(index) {
-        currentIndex = (index + showcaseImages.length) % showcaseImages.length;
-        const img = showcaseImages[currentIndex];
+        currentIndex = (index + galleryData.length) % galleryData.length;
+        const img = galleryData[currentIndex];
         modalImg.style.opacity = "0";
         setTimeout(() => {
             modalImg.src = img.src;
@@ -115,7 +128,7 @@ import { showcaseImages } from "@constants/showcase";
     const closeModal = () => {
         modal.classList.add("hidden");
         modal.classList.remove("flex");
-        document.body.style.overflow = "auto";
+        document.body.style.overflow = "";
     };
 
     galleryItems.forEach((item, index) =>

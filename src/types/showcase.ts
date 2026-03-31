@@ -1,4 +1,6 @@
+import type { ImageMetadata } from "astro";
+
 export interface ShowcaseImage {
-    src: string;
+    src: ImageMetadata;
     alt: string;
-}
+}

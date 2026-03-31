@@ -18,7 +18,7 @@ const switchPath = locale === "es" ? "/en/" : "/";
 ---
 
 <header
-    class="fixed top-0 left-0 w-full h-20 z-100 bg-white shadow-sm md:backdrop-blur-md pt-[env(safe-area-inset-top)]"
+    class="fixed top-0 left-0 w-full h-20 z-50 bg-white shadow-sm md:backdrop-blur-md pt-[env(safe-area-inset-top)]"
 >
     <SectionContainer>
         <nav class="flex items-center justify-between py-4 relative">
@@ -31,7 +31,7 @@ const switchPath = locale === "es" ? "/en/" : "/";
                 }
             </ul>
 
-            <div class="flex items-center gap-4 z-1001">
+            <div class="flex items-center gap-4 z-60">
                 <a
                     href={switchPath}
                     data-lang-switch
@@ -49,7 +49,9 @@ const switchPath = locale === "es" ? "/en/" : "/";
 
             <div
                 id="mobile-menu"
-                class="fixed inset-0 bg-white translate-x-full transition-transform duration-300 lg:hidden flex flex-col items-center pt-28 gap-8 z-100"
+                role="dialog"
+                aria-label={t("nav.menuLabel" as any)}
+                class="fixed inset-0 bg-white translate-x-full transition-transform duration-300 lg:hidden flex flex-col items-center pt-28 gap-8 z-55"
             >
                 <ul
                     class="flex flex-col items-center gap-8 text-xl font-bold uppercase tracking-wide"
