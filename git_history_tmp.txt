@@ -1,0 +1,38 @@
+﻿COMMIT:a7e7abf - Merge pull request #7 from MauroChapero/feature/tablet-responsive-fix
+BODY:feat: Implement initial internationalized website structure, includinÔÇª
+FILES:
+COMMIT:0684a2a - feat: implement services section with responsive card components and localized content management
+BODY:
+FILES:
+implementation_plan_tablet_responsive.md
+public/icons/update-posadas-navbar-icon.webp
+src/components/Hero.astro
+src/components/Rates.astro
+src/components/Services.astro
+src/components/features/hero/HeroTitle.astro
+src/components/features/services/ServiceCard.astro
+src/components/ui/brand/Logo.astro
+src/constants/rates.ts
+src/i18n/content.ts
+src/i18n/ui.ts
+src/types/services.ts
+
+COMMIT:1fe8723 - feat: Implement initial internationalized website structure, including base layout, navigation, hero section, and showcase components.
+BODY:
+FILES:
+public/scripts/lang-redirect.js
+src/assets/hero.webp
+src/assets/showcase/bathroom.webp
+src/assets/showcase/bedroom.webp
+src/assets/showcase/breakfast.webp
+src/assets/showcase/garden.webp
+src/components/Hero.astro
+src/components/NavBar.astro
+src/components/features/hero/HeroBackground.astro
+src/components/features/showcase/GalleryModal.astro
+src/components/features/showcase/ShowcaseCard.astro
+src/components/ui/buttons/HamburgerButton.astro
+src/i18n/content.ts
+src/layouts/Layout.astro
+src/scripts/navigation.ts
+src/types/showcase.ts

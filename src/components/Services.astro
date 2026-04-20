@@ -5,7 +5,10 @@ import { servicesI18n } from "@i18n/content";
 import { useTranslations } from "@i18n/utils";
 import type { Locale } from "@i18n/utils";
 
-interface Props { locale: Locale }
+interface Props {
+  locale: Locale;
+}
+
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 const services = servicesI18n[locale];
@@ -15,22 +18,48 @@ const services = servicesI18n[locale];
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-20">
       <h2 class="text-4xl md:text-5xl mb-[0.2rem] font-bold text-gray-900">
-        {t("services.title")} <span class="bg-clip-text text-gray-900">{t("services.titleAccent")}</span>
+        {t("services.title")}
+        <span class="bg-clip-text text-gray-900">{t("services.titleAccent")}</span>
       </h2>
-      <p
-        class="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed font-light"
-      >
+      <p class="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed font-light">
         {t("services.subtitle" as any)}
       </p>
 
-      <ul class="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3 max-w-4xl mx-auto text-[1.1rem] text-gray-700 font-medium">
-        <li class="flex items-center gap-2"><span class="text-lime-600 text-xl">✓</span> {t("services.list.toiletries" as any)}</li>
-        <li class="flex items-center gap-2"><span class="text-lime-600 text-xl">✓</span> {t("services.list.towels" as any)}</li>
-        <li class="flex items-center gap-2"><span class="text-lime-600 text-xl">✓</span> {t("services.list.aircon" as any)}</li>
-        <li class="flex items-center gap-2"><span class="text-lime-600 text-xl">✓</span> {t("services.list.smarttv" as any)}</li>
-        <li class="flex items-center gap-2"><span class="text-lime-600 text-xl">✓</span> {t("services.list.parking" as any)}</li>
-        <li class="flex items-center gap-2"><span class="text-lime-600 text-xl">✓</span> {t("services.list.reception" as any)}</li>
-        <li class="flex items-center gap-2"><span class="text-lime-600 text-xl">✓</span> {t("services.list.transfer" as any)}</li>
+      <ul
+        class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap lg:justify-center gap-x-8 gap-y-4 w-fit lg:w-full lg:max-w-5xl mx-auto text-[1.1rem] text-gray-700 font-medium text-left"
+      >
+        <li class="flex items-start lg:items-center gap-3 lg:gap-2">
+          <span class="text-lime-600 text-xl font-bold mt-[2px] lg:mt-0 shrink-0">✓</span>
+          <span class="leading-tight lg:leading-normal">{t("services.list.toiletries" as any)}</span>
+        </li>
+        <li class="flex items-start lg:items-center gap-3 lg:gap-2">
+          <span class="text-lime-600 text-xl font-bold mt-[2px] lg:mt-0 shrink-0">✓</span>
+          <span class="leading-tight lg:leading-normal">{t("services.list.towels" as any)}</span>
+        </li>
+        <li class="flex items-start lg:items-center gap-3 lg:gap-2">
+          <span class="text-lime-600 text-xl font-bold mt-[2px] lg:mt-0 shrink-0">✓</span>
+          <span class="leading-tight lg:leading-normal">{t("services.list.aircon" as any)}</span>
+        </li>
+        <li class="flex items-start lg:items-center gap-3 lg:gap-2">
+          <span class="text-lime-600 text-xl font-bold mt-[2px] lg:mt-0 shrink-0">✓</span>
+          <span class="leading-tight lg:leading-normal">{t("services.list.smarttv" as any)}</span>
+        </li>
+
+        <!-- Break only for desktop (starting from 1024px) -->
+        <li class="basis-full h-0 hidden lg:block" aria-hidden="true"></li>
+
+        <li class="flex items-start lg:items-center gap-3 lg:gap-2">
+          <span class="text-lime-600 text-xl font-bold mt-[2px] lg:mt-0 shrink-0">✓</span>
+          <span class="leading-tight lg:leading-normal">{t("services.list.parking" as any)}</span>
+        </li>
+        <li class="flex items-start lg:items-center gap-3 lg:gap-2">
+          <span class="text-lime-600 text-xl font-bold mt-[2px] lg:mt-0 shrink-0">✓</span>
+          <span class="leading-tight lg:leading-normal">{t("services.list.reception" as any)}</span>
+        </li>
+        <li class="flex items-start lg:items-center gap-3 lg:gap-2">
+          <span class="text-lime-600 text-xl font-bold mt-[2px] lg:mt-0 shrink-0">✓</span>
+          <span class="leading-tight lg:leading-normal">{t("services.list.transfer" as any)}</span>
+        </li>
       </ul>
     </div>
 
