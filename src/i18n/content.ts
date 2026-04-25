@@ -146,7 +146,7 @@ export const contactDetailsI18n: Record<Locale, ContactInfo[]> = {
 
 export const footerCredits: FooterCredits = {
     brand: "Posada Del Leñatero",
-    year: "2016",
+    year: "2026",
     author: "Mauro Chapero",
     authorUrl: "https://github.com/MauroChapero",
 };

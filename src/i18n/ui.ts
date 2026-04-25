@@ -71,7 +71,7 @@ export const ui = {
         "reviews.guestFrom": "Huésped de ",
 
         // Footer
-        "footer.designBy": "Diseño y Colaboración:",
+        "footer.designBy": "Diseño, desarrollo y maquetado web:",
 
         // Nav
         "nav.bookNow": "¡Reservá!",
